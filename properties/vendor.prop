@@ -175,6 +175,9 @@ ro.config.media_vol_steps=15
 ro.config.system_vol_steps=15
 ro.config.vc_call_vol_steps=11
 
+# Perf
+ro.vendor.extension_library=libqti-perfd-client.so
+
 # QCOM
 ro.soc.manufacturer=QTI
 
