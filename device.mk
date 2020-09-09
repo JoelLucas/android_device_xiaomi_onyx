@@ -12,9 +12,6 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/emulated_storage.mk)
 # Virtual A/B
 $(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota/launch_with_vendor_ramdisk.mk)
 
-# Dalvik vm configs
-$(call inherit-product, frameworks/native/build/phone-xhdpi-6144-dalvik-heap.mk)
-
 # pKVM
 $(call inherit-product, packages/modules/Virtualization/apex/product_packages.mk)
 
@@ -141,6 +138,15 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.camera.full.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.camera.full.xml \
     frameworks/native/data/etc/android.hardware.camera.raw.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.camera.raw.xml
 
+# Dalvik
+PRODUCT_SYSTEM_PROPERTIES += \
+    dalvik.vm.heapstartsize=32m \
+    dalvik.vm.heapgrowthlimit=512m \
+    dalvik.vm.heapsize=1024m \
+    dalvik.vm.heaptargetutilization=0.5 \
+    dalvik.vm.heapminfree=16m \
+    dalvik.vm.heapmaxfree=64m
+
 # Display
 PRODUCT_PACKAGES += \
     android.hardware.graphics.mapper@4.0-impl-qti-display \
@@ -221,7 +227,8 @@ PRODUCT_PACKAGES += \
 # Init
 PRODUCT_PACKAGES += \
     charger_fw_fstab.qti \
-    fstab.qcom
+    fstab.qcom \
+    fstab.zram
 
 PRODUCT_PACKAGES += \
     ueventd-odm-onyx.rc \
@@ -249,7 +256,8 @@ PRODUCT_PACKAGES += \
     init.qti.kernel.sh
 
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/rootdir/etc/fstab.qcom:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/first_stage_ramdisk/fstab.qcom
+    $(LOCAL_PATH)/rootdir/etc/fstab.qcom:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/first_stage_ramdisk/fstab.qcom \
+    $(LOCAL_PATH)/rootdir/etc/fstab.zram:$(TARGET_COPY_OUT_VENDOR)/etc/fstab.zram
 
 # IR
 PRODUCT_PACKAGES += \
