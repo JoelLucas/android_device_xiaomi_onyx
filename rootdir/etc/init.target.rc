@@ -167,3 +167,6 @@ on property:sys.shutdown.requested=*
 on early-boot && property:persist.vendor.pcie.boot_option=*
     write /sys/bus/platform/devices/1c00000.qcom,pcie/debug/boot_option ${persist.vendor.pcie.boot_option}
     write /sys/bus/platform/devices/1c08000.qcom,pcie/debug/boot_option ${persist.vendor.pcie.boot_option}
+   
+# STOP EATING MY BATTERY AFTER 100H OF UPTIME FUCK YOU
+    stop statsd
