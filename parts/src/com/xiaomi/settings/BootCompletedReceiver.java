@@ -12,6 +12,7 @@ import android.content.Intent;
 import android.hardware.display.DisplayManager;
 import android.os.IBinder;
 import android.os.UserHandle;
+import android.provider.Settings;
 import android.util.Log;
 import android.view.Display;
 import android.view.Display.HdrCapabilities;
@@ -19,6 +20,7 @@ import android.view.Display.HdrCapabilities;
 public class BootCompletedReceiver extends BroadcastReceiver {
     private static final String TAG = "XiaomiParts";
     private static final boolean DEBUG = true;
+    private static final String KEY_MIN_REFRESH_RATE = "min_refresh_rate";
 
     @Override
     public void onReceive(final Context context, Intent intent) {
@@ -33,5 +35,15 @@ public class BootCompletedReceiver extends BroadcastReceiver {
         displayManager.overrideHdrTypes(Display.DEFAULT_DISPLAY,
                 new int[] {HdrCapabilities.HDR_TYPE_DOLBY_VISION, HdrCapabilities.HDR_TYPE_HDR10,
                         HdrCapabilities.HDR_TYPE_HLG, HdrCapabilities.HDR_TYPE_HDR10_PLUS});
+
+        // Set the minimum refresh rate to 60Hz
+        try {
+            Settings.System.putFloat(context.getContentResolver(), KEY_MIN_REFRESH_RATE, 60);
+            if (DEBUG) {
+                Log.d(TAG, "Successfully set " + KEY_MIN_REFRESH_RATE + " to 60Hz");
+            }
+        } catch (Exception e) {
+            Log.e(TAG, "Failed to set " + KEY_MIN_REFRESH_RATE + " to 60Hz", e);
+        }
     }
 }
