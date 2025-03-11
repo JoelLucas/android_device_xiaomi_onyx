@@ -978,4 +978,8 @@
     <!-- Default value for fp screen off unlock toggle, it only works for the devices that support
          fp screen off unlock-->
     <bool name="config_screen_off_udfps_default_on">true</bool>
+
+    <!-- Control whether the pickup gesture is enabled by default. This value will be used
+     during initialization when the setting is still null. -->
+    <bool name="config_dozePickupGestureEnabled">false</bool>
 </resources>
