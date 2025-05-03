@@ -505,6 +505,9 @@ on post-fs-data
     mkdir /mnt/vendor/persist/fingerprint/meta 0770 system system
     mkdir /mnt/vendor/persist/fingerprint/jiiov 0770 system system
 
+    # Enable PowerHAL hint processing
+    setprop vendor.powerhal.init 1
+
 service nqnfcinfo /system/vendor/bin/nqnfcinfo
     class late_start
     group nfc
