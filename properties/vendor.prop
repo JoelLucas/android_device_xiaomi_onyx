@@ -175,16 +175,6 @@ ro.config.media_vol_steps=15
 ro.config.system_vol_steps=15
 ro.config.vc_call_vol_steps=11
 
-# PASR
-vendor.pasr.activemode.enabled=true
-vendor.power.pasr.enabled=true
-
-# Perf
-ro.vendor.extension_library=libqti-perfd-client.so
-ro.vendor.perf-hal.ver=3.0
-ro.vendor.perf.scroll_opt=1
-vendor.perf.framepacing.enable=1
-
 # QCOM
 ro.soc.manufacturer=QTI
 
