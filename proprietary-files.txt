@@ -2650,28 +2650,10 @@ vendor/etc/init/hw/init.qti.kernel.rc
 vendor/etc/init/hw/init.qti.kernel.target.rc
 
 # Keymint
-odm/bin/hw/android.hardware.security.keymint-service.strongbox-nxp
-odm/bin/hw/android.hardware.weaver-service.nxp-qti
-odm/etc/init/android.hardware.security.keymint-service.strongbox.nxp.rc
-odm/etc/init/android.hardware.weaver-service.nxp.rc
-odm/etc/permissions/android.hardware.hardware_keystore.jc-strongbox-keymint.nxp.xml
-odm/etc/vintf/manifest/android.hardware.security.keymint-service.strongbox.xml
-odm/etc/vintf/manifest/android.hardware.security.sharedsecret-service.strongbox.xml
-odm/etc/vintf/manifest/android.hardware.weaver-service.nxp.xml
-odm/lib64/ese_weaver.so
-odm/lib64/libjc_keymint-nxp.so
-odm/lib64/libjc_keymint_transport_nxp.so
-odm/lib64/libkeymint_empty-nxp.so
-odm/lib64/libkeymint_empty-thales.so
-odm/lib64/libkeymint_transport_empty-nxp.so
-odm/lib64/libweaver_empty-nxp.so
-odm/lib64/libweaver_empty-thales.so
 vendor/bin/hw/android.hardware.security.keymint-service-qti
 vendor/etc/hal_uuid_map_onyx.xml
 vendor/etc/init/android.hardware.security.keymint-service-qti.rc
 vendor/etc/vintf/manifest/android.hardware.security.keymint-service-qti.xml
-vendor/lib64/android.hardware.security.keymint-V3-ndk.so:vendor/lib64/android.hardware.security.keymint-V3-ndk_prebuilt.so;FIX_SONAME
-vendor/lib64/libcppbor_external.so:vendor/lib64/libcppbor_onyx.so;FIX_SONAME
 vendor/lib64/libkeymasterdeviceutils.so
 vendor/lib64/libkeymasterprovision.so
 vendor/lib64/libkeymasterutils.so
