@@ -77,24 +77,6 @@ blob_fixups: blob_fixups_user_type = {
         .regex_replace('xml=version', 'xml version'),
 
     (
-        'odm/bin/hw/android.hardware.security.keymint-service.strongbox-nxp',
-        'odm/lib64/libjc_keymint-nxp.so',
-        'odm/lib64/libjc_keymint_transport_nxp.so',
-        'odm/lib64/libkeymint_empty-nxp.so',
-        'odm/lib64/libkeymint_empty-thales.so',
-        'vendor/bin/hw/android.hardware.security.keymint-service-qti',
-        'vendor/lib64/libqtikeymint.so',
-    ): blob_fixup()
-        .replace_needed(
-            'android.hardware.security.keymint-V3-ndk.so',
-            'android.hardware.security.keymint-V3-ndk_prebuilt.so'
-        )
-        .replace_needed(
-            'libcppbor_external.so',
-            'libcppbor_onyx.so'
-    ),
-
-    (
         'odm/lib64/libaudioroute_ext.so',
         'vendor/lib64/libagm.so',
         'vendor/lib64/libar-pal.so',
