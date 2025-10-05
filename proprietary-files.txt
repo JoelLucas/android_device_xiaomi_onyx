@@ -84,7 +84,6 @@ vendor/etc/models/acd/environment.eai
 vendor/etc/models/acd/event.eai
 vendor/etc/models/acd/music.eai
 vendor/etc/models/acd/speech.eai
-vendor/etc/vintf/manifest/manifest_audio_qti_services.xml
 vendor/etc/vintf/manifest/qasr_vintf.xml
 vendor/lib64/hw/audio.primary.default.so
 vendor/lib64/hw/libaudiocorehal.default.so;DISABLE_DEPS;REQUIRED=manifest_audiocorehal_default.xml
