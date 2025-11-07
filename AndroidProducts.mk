@@ -4,4 +4,4 @@
 #
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/lineage_onyx.mk
+    $(LOCAL_DIR)/superior_onyx.mk
