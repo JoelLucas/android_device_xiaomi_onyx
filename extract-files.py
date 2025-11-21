@@ -134,7 +134,7 @@ blob_fixups: blob_fixups_user_type = {
     'odm/bin/hw/vendor.xiaomi.sensor.citsensorservice.aidl': blob_fixup()
         .replace_needed(
             'android.hardware.graphics.common-V5-ndk.so',
-            'android.hardware.graphics.common-V6-ndk.so'
+            'android.hardware.graphics.common-V7-ndk.so'
         )
         .replace_needed(
             'android.hardware.sensors-V2-ndk.so',
@@ -283,7 +283,7 @@ blob_fixups: blob_fixups_user_type = {
         .add_needed('libcodec2_shim.so')
         .replace_needed(
             'android.hardware.graphics.common-V5-ndk.so',
-            'android.hardware.graphics.common-V6-ndk.so'
+            'android.hardware.graphics.common-V7-ndk.so'
     ),
 
     'vendor/lib64/libwfdmmsrc_proprietary.so': blob_fixup()
