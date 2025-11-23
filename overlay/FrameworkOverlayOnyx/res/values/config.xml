@@ -991,4 +991,8 @@
 
     <!-- Whether to disable Smart Pixels on UDFPS -->
     <bool name="config_disableSmartPixelsOnUDFPS">true</bool>
+
+    <!-- Whether or not wcg mode should be enabled on this device -->
+    <bool name="config_enableWcgMode">true</bool>
+
 </resources>
