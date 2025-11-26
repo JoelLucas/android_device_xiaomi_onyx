@@ -4,10 +4,10 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-#include <aidl/android/hardware/power/BnPower.h>
-#include <android-base/file.h>
-#include <android-base/logging.h>
+#include <aidl/android/hardware/power/Mode.h>
 #include <sys/ioctl.h>
+#include <fcntl.h>
+#include <unistd.h>
 
 #define CMD_DATA_BUF_SIZE 256
 #define COMMON_DATA_CMD 0
@@ -29,11 +29,7 @@ typedef struct {
 #define TOUCH_IOC_COMMON_DATA _IOW(TOUCH_MAGIC, COMMON_DATA_CMD, touch_data)
 #define TOUCH_IOC_SELECT_TOUCH_ID _IOW(TOUCH_MAGIC, SELECT_TOUCH_ID, int)
 
-namespace aidl {
-namespace android {
-namespace hardware {
-namespace power {
-namespace impl {
+namespace aidl::google::hardware::power::impl::pixel {
 
 using ::aidl::android::hardware::power::Mode;
 
@@ -51,6 +47,7 @@ bool setDeviceSpecificMode(Mode type, bool enabled) {
     switch (type) {
         case Mode::DOUBLE_TAP_TO_WAKE: {
             int fd = open(TOUCH_DEV_PATH, O_RDWR);
+            if (fd < 0) return false;
             ioctl(fd, TOUCH_IOC_SELECT_TOUCH_ID, TOUCH_ID);
             touch_data data = {};
             data.touch_id = TOUCH_ID;
@@ -67,8 +64,4 @@ bool setDeviceSpecificMode(Mode type, bool enabled) {
     }
 }
 
-}  // namespace impl
-}  // namespace power
-}  // namespace hardware
-}  // namespace android
-}  // namespace aidl
+}  // namespace aidl::google::hardware::power::impl::pixel

@@ -307,6 +307,12 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/powerhint.json:$(TARGET_COPY_OUT_VENDOR)/etc/powerhint.json
 
+# Power - libperfmgr extension
+$(call soong_config_set,power_libperfmgr,mode_extension_lib,//device/xiaomi/onyx/power:libperfmgr-ext-onyx)
+
+PRODUCT_PACKAGES += \
+    libperfmgr-ext-onyx
+
 # Properties
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/properties/odm_CN.prop:$(TARGET_COPY_OUT_ODM)/etc/odm_CN.prop \
