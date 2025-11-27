@@ -14,10 +14,10 @@ import android.os.UserHandle
 import android.util.Log
 import android.view.Display
 import android.view.Display.HdrCapabilities
+import com.xiaomi.settings.display.RefreshRateService
 
 /** Everything begins at boot. */
 class BootCompletedReceiver : BroadcastReceiver() {
-    private val KEY_MIN_REFRESH_RATE = "min_refresh_rate"
 
     companion object {
         private const val TAG = "BootReceiver"
@@ -36,6 +36,9 @@ class BootCompletedReceiver : BroadcastReceiver() {
     }
 
     private fun onLockedBootCompleted(context: Context) {
+        // Display
+        context.startServiceAsUser(Intent(context, RefreshRateService::class.java), UserHandle.CURRENT)
+
         // Override HDR types to enable Dolby Vision
         val displayManager = context.getSystemService(DisplayManager::class.java)
         displayManager?.overrideHdrTypes(Display.DEFAULT_DISPLAY, intArrayOf(
@@ -44,17 +47,5 @@ class BootCompletedReceiver : BroadcastReceiver() {
             HdrCapabilities.HDR_TYPE_HLG,
             HdrCapabilities.HDR_TYPE_HDR10_PLUS
         ))
-
-        // Set minimum refresh rate to 60Hz
-        try {
-            android.provider.Settings.System.putFloat(
-                context.contentResolver, 
-                KEY_MIN_REFRESH_RATE, 
-                60f
-            )
-            if (DEBUG) Log.d(TAG, "Set $KEY_MIN_REFRESH_RATE to 60Hz")
-        } catch (e: Exception) {
-            Log.e(TAG, "Failed to set $KEY_MIN_REFRESH_RATE", e)
-        }
     }
 }
