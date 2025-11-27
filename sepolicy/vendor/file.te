@@ -1,3 +1,5 @@
+type sysfs_therm, fs_type, sysfs_type;
+
 # Audio
 type audio_socket, file_type;
 

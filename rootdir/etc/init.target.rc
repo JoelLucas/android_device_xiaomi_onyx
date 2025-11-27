@@ -672,17 +672,17 @@ on property:sys.boot_completed=1
     start ufs_ffu_service
 
     # Set thermal mode to tgame
-    write /sys/devices/virtual/thermal/thermal_message/sconfig 19
+#    write /sys/devices/virtual/thermal/thermal_message/sconfig 19
 
 #minimum 90 hz screen rr at bootup 
 on property:sys.boot_completed=1
     exec_background -- /system/bin/settings put system min_refresh_rate 90
 
 #Hide Magisk
-on property:sys.boot_completed=1
+#on property:sys.boot_completed=1
     # Restrict permissions to socket file
     # to hide Magisk & co.
-    chmod 440 /proc/net/unix
+ #   chmod 440 /proc/net/unix
 
 #for cts-on-gsi test
 on boot && property:ro.product.system.manufacturer=Android

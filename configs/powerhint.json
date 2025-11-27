@@ -571,7 +571,49 @@
         "EXPENSIVE_RENDERING"
       ],
       "Type": "Property"
-    }
+    },
+    {
+      "Name": "ThermalMessage",
+      "Path": "/sys/devices/virtual/thermal/thermal_message/sconfig",
+      "Values": [
+        "0",
+        "1",
+        "5",
+        "6",
+        "7",
+        "9",
+        "10",
+        "11",
+        "14",
+        "15",
+        "16",
+        "18",
+        "19",
+        "20",
+        "26",
+        "57"
+      ],
+      "ResetOnInit": true,
+      "DefaultIndex": 0,
+      "Comments": [
+        "thermal-normal",
+        "thermal-huanji",
+        "thermal-phone",
+        "thermal-nolimits",
+        "thermal-class0",
+        "thermal-arvr",
+        "thermal-navigation",
+        "thermal-video",
+        "thermal-videochat",
+        "thermal-camera",
+        "thermal-4k",
+        "thermal-tgame",
+        "thermal-mgame",
+        "thermal-yuanshen",
+        "thermal-highfps",
+        "thermal-per-class0"
+      ]
+    }   
   ],
   "Actions": [
     {
@@ -620,19 +662,19 @@
       "PowerHint": "INTERACTION",
       "Node": "CPUBigPlusClusterMinFreq",
       "Duration": 200,
-      "Value": "1401600"
+      "Value": "1286400"
     },
     {
       "PowerHint": "INTERACTION",
       "Node": "CPUBigClusterMinFreq",
       "Duration": 200,
-      "Value": "1401600"
+      "Value": "1286400"
     },
     {
       "PowerHint": "INTERACTION",
       "Node": "CPULittleClusterMinFreq",
       "Duration": 200,
-      "Value": "1401600"
+      "Value": "1286400"
     },
     {
       "PowerHint": "INTERACTION",
@@ -777,6 +819,18 @@
       "Node": "GPUMinFreq",
       "Duration": 0,
       "Value": "264000000"
+    },
+    {
+      "PowerHint": "FIXED_PERFORMANCE",
+      "Node": "ThermalMessage",
+      "Duration": 0,
+      "Value": "18"
+    },
+    {
+      "PowerHint": "GAME",
+      "Node": "ThermalMessage",
+      "Duration": 0,
+      "Value": "19"
     },
     {
       "PowerHint": "Flipendo",
