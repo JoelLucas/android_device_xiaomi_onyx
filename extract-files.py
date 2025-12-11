@@ -157,72 +157,10 @@ blob_fixups: blob_fixups_user_type = {
     ),
 
     (
-        'vendor/lib64/com.qti.feature2.afbrckt.so',
-        'vendor/lib64/com.qti.feature2.anchorsync.so',
-        'vendor/lib64/com.qti.feature2.demux.so',
-        'vendor/lib64/com.qti.feature2.derivedoffline.so',
-        'vendor/lib64/com.qti.feature2.frc.so',
-        'vendor/lib64/com.qti.feature2.fusion.so',
-        'vendor/lib64/com.qti.feature2.generic.sm8750.so',
-        'vendor/lib64/com.qti.feature2.generic.so',
-        'vendor/lib64/com.qti.feature2.gs.sm8750.so',
-        'vendor/lib64/com.qti.feature2.hdr.so',
-        'vendor/lib64/com.qti.feature2.mcreprocrt.sm8750.so',
-        'vendor/lib64/com.qti.feature2.mcreprocrt.so',
-        'vendor/lib64/com.qti.feature2.memcpy.so',
-        'vendor/lib64/com.qti.feature2.metadataserializer.so',
-        'vendor/lib64/com.qti.feature2.mfsr.sm8750.so',
-        'vendor/lib64/com.qti.feature2.mfsr.so',
-        'vendor/lib64/com.qti.feature2.ml.so',
-        'vendor/lib64/com.qti.feature2.mux.so',
-        'vendor/lib64/com.qti.feature2.offlinestatsregeneration.so',
-        'vendor/lib64/com.qti.feature2.qcfa.so',
-        'vendor/lib64/com.qti.feature2.raw2yuvhdr.so',
-        'vendor/lib64/com.qti.feature2.rawhdr.so',
-        'vendor/lib64/com.qti.feature2.realtimeserializer.so',
-        'vendor/lib64/com.qti.feature2.rt.so',
-        'vendor/lib64/com.qti.feature2.rtmcx.sm8750.so',
-        'vendor/lib64/com.qti.feature2.rtmcx.so',
-        'vendor/lib64/com.qti.feature2.rtpostproc.sm8750.so',
-        'vendor/lib64/com.qti.feature2.rtpostproc.so',
-        'vendor/lib64/com.qti.feature2.serializer.so',
-        'vendor/lib64/com.qti.feature2.statsregeneration.so',
-        'vendor/lib64/com.qti.feature2.stub.so',
-        'vendor/lib64/com.qti.feature2.swmf.so',
-        'vendor/lib64/com.qualcomm.mcx.policy.mfl.so',
-        'vendor/lib64/com.qualcomm.mcx.policy.sfl.so',
-        'vendor/lib64/com.qualcomm.qti.mcx.usecase.extension.so',
-        'vendor/lib64/hw/camera.qcom.so',
-        'vendor/lib64/hw/com.qti.chi.offline.so',
-        'vendor/lib64/libcameraopt.so',
-        'vendor/lib64/libcamxcommonutils.so',
-        'vendor/lib64/libcamxsettingsmanager.so',
-        'vendor/lib64/libmicamera_adapter.so',
-        'vendor/lib64/libmicamera_aidl_device.so',
-        'vendor/lib64/libmicamera_hal_core.so',
-    ): blob_fixup()
-        .binary_regex_replace(b'ro.build.product', b'ro.vendor.camera'),
-
-    'vendor/lib64/hw/camera.qcom.so': blob_fixup()
-        .binary_regex_replace(b'ro.build.product', b'ro.vendor.camera')
-        .replace_needed(
-            'android.hardware.sensors-V2-ndk.so',
-            'android.hardware.sensors-V3-ndk.so',
-    ),
-
-    (
-        'vendor/lib64/hw/com.qti.chi.override.so',
-        'vendor/lib64/libchifeature2.so',
-    ): blob_fixup()
-        .binary_regex_replace(b'ro.build.product', b'ro.vendor.camera')
-        .replace_needed(
-            'android.hardware.graphics.allocator-V1-ndk.so',
-            'android.hardware.graphics.allocator-V2-ndk.so',
-    ),
-
-    (
         'vendor/lib64/camera/components/com.qti.node.dewarp.so',
+        'vendor/lib64/hw/com.qti.chi.override.so',
         'vendor/lib64/libcamximageformatutils.so',
+        'vendor/lib64/libchifeature2.so',
         'vendor/lib64/libqvrservice.so',
         'vendor/lib64/vendor.qti.hardware.camera.offlinecamera-service-impl.so',
     ): blob_fixup()
@@ -276,8 +214,7 @@ blob_fixups: blob_fixups_user_type = {
         ),
 
     'vendor/lib64/libcameraopt.so': blob_fixup()
-        .add_needed('libprocessgroup_shim.so')
-        .binary_regex_replace(b'ro.build.product', b'ro.vendor.camera'),
+        .add_needed('libprocessgroup_shim.so'),
 
     'vendor/lib64/libqcodec2_core.so': blob_fixup()
         .add_needed('libcodec2_shim.so')

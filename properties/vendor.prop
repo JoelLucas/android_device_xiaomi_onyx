@@ -107,7 +107,6 @@ ro.bluetooth.a2dp_offload.supported=true
 ro.vendor.bluetooth.btconfigstore=false
 
 # Camera
-ro.vendor.camera=generic_arm64
 ro.camera.enableCamera1MaxZsl=1
 ro.camerax.extensions.enabled=true
 
