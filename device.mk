@@ -73,6 +73,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     android.hardware.audio.core.sounddose-V1-ndk.vendor \
     libalsautilsv2.vendor \
+    libaudioutils_shim \
     libaudio_aidl_conversion_common_ndk.vendor \
 
 AUDIO_HAL_DIR := hardware/qcom-caf/sm8750/audio/primary-hal

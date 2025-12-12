@@ -238,6 +238,7 @@ blob_fixups: blob_fixups_user_type = {
         ),
 
     'vendor/lib64/libaudioserviceexampleimpl.so': blob_fixup()
+        .add_needed('libaudioutils_shim.so')
         .replace_needed(
             'android.media.audio.common.types-V4-ndk.so',
             'android.media.audio.common.types-V3-ndk.so'
