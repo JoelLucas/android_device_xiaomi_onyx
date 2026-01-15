@@ -18,6 +18,8 @@ allow hal_camera_default camlog_device:chr_file { ioctl open read write };
 allow hal_camera_default hal_dynamic_camera_service:service_manager find;
 allow hal_camera_default migt_dev:chr_file rw_file_perms;
 allow hal_camera_default proc_pressure_mem:file { getattr open read write };
+allow hal_camera_default procfs_memory:dir { ioctl read getattr lock open watch watch_reads search };
+allow hal_camera_default procfs_memory:file { ioctl read getattr lock map open watch watch_reads };
 allow hal_camera_default self:capability { fowner ipc_lock };
 allow hal_camera_default sys_thermal_flash_state:file { w_file_perms getattr };
 allow hal_camera_default sys_thermal_torch_real_level:file { w_file_perms getattr };

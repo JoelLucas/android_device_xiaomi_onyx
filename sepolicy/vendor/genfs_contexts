@@ -18,6 +18,9 @@ genfscon sysfs /devices/virtual/touch/touch_dev/gesture_single_tap_state u:objec
 # Info 
 genfscon sysfs /kernel/hardware_info_to_dump/hardw_info u:object_r:vendor_sysfs_hardwareinfo:s0
 
+# Memory
+genfscon proc "/mv" u:object_r:procfs_memory:s0
+
 # MCA
 genfscon sysfs /devices/platform/soc/soc:mca_strategy_wireless_revchg_class u:object_r:vendor_sysfs_xm_power:s0
 genfscon sysfs /devices/platform/soc/soc:mca_strategy_basic_wireless_class u:object_r:vendor_sysfs_xm_power:s0

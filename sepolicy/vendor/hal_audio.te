@@ -15,3 +15,4 @@ allow hal_audio_default vendor_persist_audio_file:dir rw_dir_perms;
 allow hal_audio_default vendor_persist_audio_file:file { rw_file_perms create };
 allow hal_audio_default vendor_persist_sensors_file:dir { open read search write };
 allow hal_audio_default vendor_persist_sensors_file:file { open read };
+allow hal_audio_default hal_mediaeventgatherservice_service:service_manager find;
