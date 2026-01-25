@@ -62,7 +62,6 @@ PRODUCT_PACKAGES += \
     libfmpal \
     libhfp_pal \
     libhotword_intf \
-    libmediautils_vendor.vendor \
     libpaleventnotifier \
     libpalipcservice \
     libsndcardparser \
@@ -71,11 +70,14 @@ PRODUCT_PACKAGES += \
     qtiaudiohalvendorextn
 
 PRODUCT_PACKAGES += \
+    android.hardware.audio.common-V1-ndk.vendor \
+    android.hardware.audio.core-V2-ndk.vendor \
     android.hardware.audio.core.sounddose-V1-ndk.vendor \
     libalsautilsv2.vendor \
     libaudioaidlcommon.vendor \
     libaudioutils_shim \
-    libaudio_aidl_conversion_common_ndk.vendor \
+    libmediautils_vendor.vendor \
+    libmemunreachable.vendor
 
 AUDIO_HAL_DIR := hardware/qcom-caf/sm8750/audio/primary-hal
 
