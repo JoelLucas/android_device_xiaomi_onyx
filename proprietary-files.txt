@@ -2651,7 +2651,6 @@ vendor/etc/init/hw/init.qti.kernel.target.rc
 
 # Keymint
 vendor/bin/hw/android.hardware.security.keymint-service-qti
-vendor/etc/hal_uuid_map_onyx.xml
 vendor/etc/init/android.hardware.security.keymint-service-qti.rc
 vendor/etc/vintf/manifest/android.hardware.security.keymint-service-qti.xml
 vendor/lib64/libkeymasterdeviceutils.so
