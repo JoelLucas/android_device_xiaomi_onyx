@@ -84,7 +84,7 @@
 /dev/ir_spi u:object_r:ir_spi_device:s0
 
 # Keymint
-/(odm|vendor)/bin/hw/android\.hardware\.authsecret-service\.nxp-qti u:object_r:hal_authsecret_default_exec:s0
+/vendor/bin/hw/android\.hardware\.authsecret-service\.nxp u:object_r:hal_authsecret_default_exec:s0
 /(odm|vendor)/bin/hw/android\.hardware\.security\.keymint-service\.strongbox-nxp u:object_r:vendor_hal_keymint_strongbox_exec:s0
 /(odm|vendor|system/vendor)/bin/hw/android\.hardware\.weaver-service\.nxp-qti u:object_r:vendor_hal_weaver_default_exec:s0
 
