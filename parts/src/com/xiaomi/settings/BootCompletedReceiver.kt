@@ -9,11 +9,9 @@ package com.xiaomi.settings
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
-import android.hardware.display.DisplayManager
 import android.os.UserHandle
 import android.util.Log
 import android.view.Display
-import android.view.Display.HdrCapabilities
 import com.xiaomi.settings.display.RefreshRateService
 
 /** Everything begins at boot. */
@@ -38,14 +36,5 @@ class BootCompletedReceiver : BroadcastReceiver() {
     private fun onLockedBootCompleted(context: Context) {
         // Display
         context.startServiceAsUser(Intent(context, RefreshRateService::class.java), UserHandle.CURRENT)
-
-        // Override HDR types to enable Dolby Vision
-        val displayManager = context.getSystemService(DisplayManager::class.java)
-        displayManager?.overrideHdrTypes(Display.DEFAULT_DISPLAY, intArrayOf(
-            HdrCapabilities.HDR_TYPE_DOLBY_VISION,
-            HdrCapabilities.HDR_TYPE_HDR10,
-            HdrCapabilities.HDR_TYPE_HLG,
-            HdrCapabilities.HDR_TYPE_HDR10_PLUS
-        ))
     }
 }
