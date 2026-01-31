@@ -180,6 +180,9 @@ blob_fixups: blob_fixups_user_type = {
     'vendor/etc/clstc_config_library.xml': blob_fixup()
         .regex_replace(r'<library>\s*<name>libdolbyclstc[\s\S]*?</library>', ''),
 
+    'vendor/etc/sensors/hals.conf': blob_fixup()
+        .regex_replace('.*vl53l8.*\n?', ''),
+
     (
         'vendor/lib64/camera/components/com.qti.node.dewarp.so',
         'vendor/lib64/hw/com.qti.chi.override.so',
