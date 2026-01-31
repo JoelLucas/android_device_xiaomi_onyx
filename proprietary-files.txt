@@ -2748,7 +2748,6 @@ vendor/lib64/qti.video.utils.videobufferlayout.so
 
 # Media Config
 vendor/etc/media_codecs_c2_audio.xml
-vendor/etc/media_codecs_mi_c2_audio.xml
 
 # Mlipay
 odm/bin/mlipayd
