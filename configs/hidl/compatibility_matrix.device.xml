@@ -7,20 +7,6 @@
         </interface>
     </hal>
     <hal format="aidl" optional="true">
-        <name>vendor.dolby.dms</name>
-        <interface>
-            <name>IDms</name>
-            <instance>default</instance>
-        </interface>
-    </hal>
-    <hal format="aidl" optional="true">
-        <name>vendor.dolby.dvs</name>
-        <interface>
-            <name>IDvs</name>
-            <instance>default</instance>
-        </interface>
-    </hal>
-    <hal format="aidl" optional="true">
         <name>vendor.qti.hardware.qasr</name>
         <version>1-2</version>
         <interface>

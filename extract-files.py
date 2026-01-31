@@ -195,6 +195,9 @@ blob_fixups: blob_fixups_user_type = {
             'libtinyxml2-v34.so',
     ),
 
+    'vendor/etc/clstc_config_library.xml': blob_fixup()
+        .regex_replace(r'<library>\s*<name>libdolbyclstc[\s\S]*?</library>', ''),
+
     (
         'vendor/lib64/camera/components/com.qti.node.dewarp.so',
         'vendor/lib64/hw/com.qti.chi.override.so',

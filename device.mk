@@ -73,6 +73,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     android.hardware.audio.core.sounddose-V1-ndk.vendor \
     libalsautilsv2.vendor \
+    libaudioaidlcommon.vendor \
     libaudioutils_shim \
     libaudio_aidl_conversion_common_ndk.vendor \
 
@@ -143,10 +144,6 @@ PRODUCT_PACKAGES += \
 # DRM
 PRODUCT_PACKAGES += \
     android.hardware.drm-service.clearkey
-
-# Dolby
-PRODUCT_PACKAGES += \
-    XiaomiDolby
 
 # Fastbootd
 PRODUCT_PACKAGES += \

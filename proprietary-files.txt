@@ -108,7 +108,6 @@ vendor/lib64/libcapiv2svacnnvendor.so
 vendor/lib64/libcapiv2svarnnvendor.so
 vendor/lib64/libcapiv2udk7vendor.so
 vendor/lib64/libcapiv2uvvendor.so
-vendor/lib64/libdapparamstorage.so
 vendor/lib64/libeai_fixed.so
 vendor/lib64/libeai_float.so
 vendor/lib64/liblistensoundmodel2vendor.so
@@ -120,14 +119,11 @@ vendor/lib64/libmikaraoke.so
 vendor/lib64/libmis6.so
 vendor/lib64/libmisfpsop.so
 vendor/lib64/libmisops.so
-vendor/lib64/libmisoundfx_aidl_ext.so;SYMLINK=vendor/lib64/soundfx/libmisoundfx_aidl.so
 vendor/lib64/libmisoundsa.so
 vendor/lib64/libpal_net_if.so
 vendor/lib64/libpalclient.so
 vendor/lib64/libqasr.so
 vendor/lib64/libqtigefar.so;DISABLE_DEPS
-vendor/lib64/libspatializerparamstorage.so
-vendor/lib64/libswspatializeraidl_ext.so;DISABLE_DEPS
 vendor/lib64/libtensorflowlite_c.so:vendor/lib64/libtensorflowlite_c_vendor.so;FIX_SONAME
 vendor/lib64/libtiantongpal.so
 vendor/lib64/libvui_dmgr.so
@@ -167,20 +163,14 @@ vendor/lib64/libmisight.so
 
 # Audio soundfx
 vendor/lib64/soundfx/libbundleaidl.so;DISABLE_DEPS
-vendor/lib64/soundfx/libdlbvolaidl.so
 vendor/lib64/soundfx/libdownmixaidl.so;DISABLE_DEPS
 vendor/lib64/soundfx/libdynamicsprocessingaidl.so;DISABLE_DEPS
-vendor/lib64/soundfx/libhwdapaidl.so;DISABLE_DEPS
 vendor/lib64/soundfx/libloudnessenhanceraidl.so;DISABLE_DEPS
-vendor/lib64/soundfx/libmiwndnsprocessingaidl.so;DISABLE_DEPS
 vendor/lib64/soundfx/libqcompostprocbundle.so;DISABLE_DEPS
 vendor/lib64/soundfx/libqcomvisualizer.so;DISABLE_DEPS
 vendor/lib64/soundfx/libqcomvoiceprocessing.so;DISABLE_DEPS
 vendor/lib64/soundfx/libquasar.so;DISABLE_DEPS
 vendor/lib64/soundfx/libreverbaidl.so;DISABLE_DEPS
-vendor/lib64/soundfx/libspatializeraidl.so;DISABLE_DEPS
-vendor/lib64/soundfx/libswgamedapaidl.so;DISABLE_DEPS
-vendor/lib64/soundfx/libswspatializeraidl.so;DISABLE_DEPS
 vendor/lib64/soundfx/libvisualizeraidl.so;DISABLE_DEPS
 vendor/lib64/soundfx/libvolumelistener.so;DISABLE_DEPS
 
@@ -2485,36 +2475,6 @@ vendor/etc/display/sm8750_sr_2x_y960x544.dlc
 vendor/etc/display/sm8750_sr_3x_y384x640.dlc
 vendor/etc/display/sm8750_sr_3x_y640x384.dlc
 
-# Dolby
-odm/bin/hw/dvs-aidl-service
-odm/etc/dolby/dax-default-spatializer.xml
-odm/etc/dolby/dax-default.xml
-odm/etc/init/dvs-aidl-service.rc
-odm/etc/surfaceflinger/dolby_vision.cfg
-odm/etc/vintf/manifest/dvs-aidl-service.xml
-odm/lib64/vendor.dolby.dvs-V1-ndk.so
-odm/vendor/etc/dolby_vision.cfg
-odm/vendor/persist/display/dolby_vision.cfg
-vendor/bin/hw/vendor.dolby.dms.service
-vendor/bin/hw/vendor.dolby.media.c2-default-service-dax
-vendor/etc/dolby/dax-default-spatializer.xml
-vendor/etc/dolby/dax-default.xml
-vendor/etc/init/dms-service.rc
-vendor/etc/init/vendor.dolby.media.c2-default-service-dax.rc
-vendor/etc/vintf/manifest/dms-service.xml
-vendor/etc/vintf/manifest/vendor.dolby.media.c2-default-service-dax.xml
-vendor/lib64/libcodec2_store_dolby.so
-vendor/lib64/libdlbdsservice.so
-vendor/lib64/libdlbpreg.so
-vendor/lib64/libdmshal.so
-vendor/lib64/libdolbyclstc.so
-vendor/lib64/libdolbydecoderprocessor.so
-vendor/lib64/libdolbyeglcore.so
-vendor/lib64/libdolbyottcameracontrol.so
-vendor/lib64/libqcodec2_dolbydecoderfilter.so
-vendor/lib64/vendor.dolby.dms-V1-ndk.so
-vendor/lib64/vendor.dolby.hardware.dms@2.0.so
-
 # Fingerprint
 odm/lib64/anc.hal.so
 odm/lib64/hw/fingerprint.goodix_fod.so:odm/lib64/hw/fingerprint.goodix_fod.default.so;FIX_SONAME
@@ -2754,12 +2714,9 @@ vendor/lib64/libFlacSwDec.so
 vendor/lib64/libQcelp13SwCodec.so
 vendor/lib64/lib_AIVC_decoder.so
 vendor/lib64/lib_AIVC_encoder.so
-vendor/lib64/libcodec2_soft_ac4dec.so
 vendor/lib64/libcodec2_soft_aivc_dec.so
 vendor/lib64/libcodec2_soft_aivc_enc.so
-vendor/lib64/libcodec2_soft_ddpdec.so
 vendor/lib64/libcodec2_store_mi.so
-vendor/lib64/libdeccfg.so
 vendor/lib64/libdsd2pcm.so
 vendor/lib64/libqc2audio_base.so
 vendor/lib64/libqc2audio_basecodec.so
@@ -2791,7 +2748,6 @@ vendor/lib64/qti.video.utils.videobufferlayout.so
 
 # Media Config
 vendor/etc/media_codecs_c2_audio.xml
-vendor/etc/media_codecs_dolby_audio.xml
 vendor/etc/media_codecs_mi_c2_audio.xml
 
 # Mlipay
