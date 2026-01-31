@@ -7,13 +7,6 @@
         </interface>
     </hal>
     <hal format="aidl" optional="true">
-        <name>android.hardware.vibrator</name>
-        <interface>
-            <name>IVibrator</name>
-            <instance>vibratorfeature</instance>
-        </interface>
-    </hal>
-    <hal format="aidl" optional="true">
         <name>vendor.dolby.dms</name>
         <interface>
             <name>IDms</name>

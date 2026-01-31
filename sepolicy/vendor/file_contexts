@@ -150,10 +150,6 @@
 /sys/devices/virtual/touch/touch_dev/update_rawdata u:object_r:sysfs_touch_hostprocess:s0
 /sys/devices/virtual/touch/tp_dev/fod_status u:object_r:sysfs_tp_fodstatus:s0
 
-# Vibrator
-/odm/bin/hw/vibratorfeature-wrapper u:object_r:hal_vibrator_default_exec:s0
-/vendor/bin/hw/vendor\.xiaomi\.hardware\.vibratorfeature\.service u:object_r:hal_vibrator_default_exec:s0
-
 # WLAN
 /data/vendor/mac_addr(/.*)? u:object_r:vendor_mac_vendor_data_file:s0
 /data/vendor/mbnconfig(/.*)? u:object_r:vendor_firmware_data_file:s0

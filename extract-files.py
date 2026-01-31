@@ -195,20 +195,11 @@ blob_fixups: blob_fixups_user_type = {
             'libtinyxml2-v34.so',
     ),
 
-    'vendor/etc/init/vendor.xiaomi.hardware.vibratorfeature.service.rc': blob_fixup()
-        .regex_replace('odm/bin', 'vendor/bin'),
-
     (
         'vendor/etc/media_codecs_tuna_v0.xml',
         'vendor/etc/media_codecs_tuna_v0_without_dvenc.xml',
     ): blob_fixup()
         .regex_replace('.*media_codecs_(google_audio|google_c2|google_telephony|google_video|vendor_audio).*\n', ''),
-
-    'vendor/bin/hw/vendor.xiaomi.hardware.vibratorfeature.service': blob_fixup()
-        .replace_needed(
-            'android.hardware.vibrator-V1-ndk_platform.so',
-            'android.hardware.vibrator-V1-ndk_prebuilt.so'
-    ),
 
     (
         'vendor/lib64/camera/components/com.qti.node.dewarp.so',
