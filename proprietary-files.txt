@@ -2650,19 +2650,15 @@ vendor/etc/init/hw/init.qti.kernel.rc
 vendor/etc/init/hw/init.qti.kernel.target.rc
 
 # Keymint
-odm/bin/hw/android.hardware.authsecret-service.nxp-qti
 odm/bin/hw/android.hardware.security.keymint-service.strongbox-nxp
 odm/bin/hw/android.hardware.weaver-service.nxp-qti
-odm/etc/init/android.hardware.authsecret-service.nxp.rc
 odm/etc/init/android.hardware.security.keymint-service.strongbox.nxp.rc
 odm/etc/init/android.hardware.weaver-service.nxp.rc
 odm/etc/permissions/android.hardware.hardware_keystore.jc-strongbox-keymint.nxp.xml
-odm/etc/vintf/manifest/android.hardware.authsecret-service.nxp.xml
 odm/etc/vintf/manifest/android.hardware.security.keymint-service.strongbox.xml
 odm/etc/vintf/manifest/android.hardware.security.sharedsecret-service.strongbox.xml
 odm/etc/vintf/manifest/android.hardware.weaver-service.nxp.xml
 odm/lib64/ese_weaver.so
-odm/lib64/libauthsecret_empty-nxp.so
 odm/lib64/libjc_keymint-nxp.so
 odm/lib64/libjc_keymint_transport_nxp.so
 odm/lib64/libkeymint_empty-nxp.so
