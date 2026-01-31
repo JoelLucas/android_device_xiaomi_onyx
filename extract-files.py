@@ -196,12 +196,6 @@ blob_fixups: blob_fixups_user_type = {
     ),
 
     (
-        'vendor/etc/media_codecs_tuna_v0.xml',
-        'vendor/etc/media_codecs_tuna_v0_without_dvenc.xml',
-    ): blob_fixup()
-        .regex_replace('.*media_codecs_(google_audio|google_c2|google_telephony|google_video|vendor_audio).*\n', ''),
-
-    (
         'vendor/lib64/camera/components/com.qti.node.dewarp.so',
         'vendor/lib64/hw/com.qti.chi.override.so',
         'vendor/lib64/libcamximageformatutils.so',
