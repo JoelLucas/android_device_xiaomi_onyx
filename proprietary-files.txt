@@ -2794,9 +2794,7 @@ vendor/etc/media_codecs_c2_audio.xml
 vendor/etc/media_codecs_dolby_audio.xml
 vendor/etc/media_codecs_mi_c2_audio.xml
 vendor/etc/media_codecs_performance_tuna_v0.xml
-vendor/etc/media_codecs_performance_tuna_v0_without_dvenc.xml
 vendor/etc/media_codecs_tuna_v0.xml
-vendor/etc/media_codecs_tuna_v0_without_dvenc.xml
 vendor/etc/media_tuna_v0/video_system_specs.json
 
 # Mlipay
