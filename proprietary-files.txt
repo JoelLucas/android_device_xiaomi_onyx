@@ -2736,9 +2736,6 @@ vendor/lib64/libqcodec2_videofrcfilter.so
 vendor/lib64/libvideotxr.so
 vendor/lib64/qti.video.utils.videobufferlayout.so
 
-# Media Config
-vendor/etc/media_codecs_c2_audio.xml
-
 # Mlipay
 odm/bin/mlipayd
 odm/etc/init/vendor.xiaomi.hardware.mlipay-service.rc
