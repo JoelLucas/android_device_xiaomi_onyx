@@ -2241,8 +2241,10 @@ vendor/bin/qdcmss
 vendor/etc/init/qdcmss.rc
 vendor/etc/init/vendor.qti.hardware.display.composer-service.rc:vendor/etc/init/vendor.qti.hardware.display.composer-service_xiaomi.rc
 vendor/etc/snapdragon_color_libs_config.xml
+vendor/etc/vintf/manifest/mapper.qti.xml
 vendor/etc/vintf/manifest/vendor.qti.hardware.display.composer-service3_v3.xml:vendor/etc/vintf/manifest/vendor.qti.hardware.display.composer-service3_v3_xiaomi.xml
 vendor/lib64/hw/gralloc.default.so
+vendor/lib64/hw/mapper.qti.so
 vendor/lib64/libBlAlgointf.so
 vendor/lib64/libbacklight-calib.so
 vendor/lib64/libdfintf.so
