@@ -154,6 +154,7 @@ odm/firmware/sipa.bin
 
 # Audio graph manager
 vendor/lib64/libagm.so;MAKE_COPY_RULE_ONLY
+vendor/lib64/libagmmixer.so
 vendor/lib64/libmisight.so
 
 # Audio soundfx
