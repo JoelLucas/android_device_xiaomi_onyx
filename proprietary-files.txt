@@ -1261,10 +1261,10 @@ odm/lib64/camera/plugins/com.xiaomi.plugin.facealignpreview.so
 odm/lib64/camera/plugins/com.xiaomi.plugin.filter.so
 odm/lib64/camera/plugins/com.xiaomi.plugin.frontbokeh.so
 odm/lib64/camera/plugins/com.xiaomi.plugin.frontbokehpreview.so
-odm/lib64/camera/plugins/com.xiaomi.plugin.gainmap.so;DISABLE_CHECKELF
+odm/lib64/camera/plugins/com.xiaomi.plugin.gainmap.so
 odm/lib64/camera/plugins/com.xiaomi.plugin.gainmapPostProc.so
 odm/lib64/camera/plugins/com.xiaomi.plugin.heifedit.so
-odm/lib64/camera/plugins/com.xiaomi.plugin.jpegrAggr.so;DISABLE_CHECKELF
+odm/lib64/camera/plugins/com.xiaomi.plugin.jpegrAggr.so
 odm/lib64/camera/plugins/com.xiaomi.plugin.ldc.so
 odm/lib64/camera/plugins/com.xiaomi.plugin.memcpy.so
 odm/lib64/camera/plugins/com.xiaomi.plugin.mialgoallinone.so
@@ -1310,12 +1310,12 @@ odm/lib64/camera/zsl/com.xiaomi.zsl.nightmotion.so
 odm/lib64/camera/zsl/com.xiaomi.zsl.nightmotionzslbanding.so
 odm/lib64/camera/zsl/com.xiaomi.zsl.single.so
 odm/lib64/camera/zsl/com.xiaomi.zsl.sr.so
-odm/lib64/libAncHumanPreviewBokeh.so;DISABLE_CHECKELF
+odm/lib64/libAncHumanPreviewBokeh.so
 odm/lib64/libIntelligentFocus.so
-odm/lib64/libMiEmojiEffect.so;DISABLE_CHECKELF
+odm/lib64/libMiEmojiEffect.so
 odm/lib64/libMiStereoFactoryCalibAnalyzeBin_qual.so
-odm/lib64/libMiVideoFilter.so;DISABLE_CHECKELF
-odm/lib64/libTrueSight.so;DISABLE_CHECKELF
+odm/lib64/libMiVideoFilter.so
+odm/lib64/libTrueSight.so
 odm/lib64/libanc_edof_checker.so
 odm/lib64/libanc_single_bokeh.so
 odm/lib64/libanc_supervq.so
@@ -1356,7 +1356,7 @@ odm/lib64/libmismartae.so
 odm/lib64/libmorpho_Depurple.so
 odm/lib64/libportrait_repair_qnn.so
 odm/lib64/librfs_warp.so
-odm/lib64/libwa_widelens_undistort.so;DISABLE_CHECKELF
+odm/lib64/libwa_widelens_undistort.so
 odm/lib64/libxmi_slow_motion_mein.so
 odm/lib64/vendor.xiaomi.hardware.seccam-V1-ndk.so
 vendor/bin/hw/vendor.qti.camera.provider-service_64
@@ -1642,7 +1642,7 @@ vendor/lib64/libHISCppAlgos.so
 vendor/lib64/libIMTCppAlgos.so
 vendor/lib64/libITT.so
 vendor/lib64/libMiMotion.so
-vendor/lib64/libMiPhotoFilter.so;DISABLE_CHECKELF
+vendor/lib64/libMiPhotoFilter.so
 vendor/lib64/libPlatformValidatorShared.so
 vendor/lib64/libSNPE.so
 vendor/lib64/libSNPESample.so
@@ -1714,6 +1714,8 @@ vendor/lib64/libipebpsstriping170.so
 vendor/lib64/libipebpsstriping480.so
 vendor/lib64/libiqdbgmgr.so
 vendor/lib64/libisphwsetting.so
+vendor/lib64/libjpegdecoder.so:vendor/lib64/libjpegdecoder_prebuilt.so;FIX_SONAME
+vendor/lib64/libjpegencoder.so:vendor/lib64/libjpegencoder_prebuilt.so;FIX_SONAME
 vendor/lib64/libmctfengine_stub.so
 vendor/lib64/libmfGhostDetection.so
 vendor/lib64/libmfec.so
@@ -1775,6 +1777,7 @@ vendor/lib64/libtfestriping.so
 vendor/lib64/libthreadutils.so
 vendor/lib64/libubifocus.so
 vendor/lib64/libubwcp.so
+vendor/lib64/libultrahdr.so:vendor/lib64/libultrahdr_prebuilt.so;FIX_SONAME
 vendor/lib64/libvideoml.so
 vendor/lib64/qsn1nrt430.bin
 vendor/lib64/qsn1nrt43180.bin

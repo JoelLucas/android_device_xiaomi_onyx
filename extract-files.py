@@ -77,6 +77,22 @@ blob_fixups: blob_fixups_user_type = {
         .regex_replace('xml=version', 'xml version'),
 
     (
+        'odm/lib64/libAncHumanPreviewBokeh.so',
+        'odm/lib64/libMiEmojiEffect.so',
+        'odm/lib64/libMiVideoFilter.so',
+        'odm/lib64/libTrueSight.so',
+        'odm/lib64/libwa_widelens_undistort.so',
+        'vendor/lib64/libMiPhotoFilter.so'
+    ): blob_fixup()
+        .clear_symbol_version('AHardwareBuffer_allocate')
+        .clear_symbol_version('AHardwareBuffer_describe')
+        .clear_symbol_version('AHardwareBuffer_isSupported')
+        .clear_symbol_version('AHardwareBuffer_lock')
+        .clear_symbol_version('AHardwareBuffer_lockPlanes')
+        .clear_symbol_version('AHardwareBuffer_release')
+        .clear_symbol_version('AHardwareBuffer_unlock'),
+
+    (
         'odm/lib64/libaudioroute_ext.so',
         'vendor/lib64/libagm.so',
         'vendor/lib64/libar-pal.so',
@@ -151,6 +167,15 @@ blob_fixups: blob_fixups_user_type = {
         .replace_needed(
             'libtinyxml2.so',
             'libtinyxml2-v34.so'
+    ),
+
+    (
+        'odm/lib64/camera/plugins/com.xiaomi.plugin.gainmap.so',
+        'odm/lib64/camera/plugins/com.xiaomi.plugin.jpegrAggr.so'
+    ): blob_fixup()
+        .replace_needed(
+            'libultrahdr.so',
+            'libultrahdr_prebuilt.so'
     ),
 
     'odm/lib64/hw/displayfeature.default.so': blob_fixup()
@@ -255,6 +280,16 @@ blob_fixups: blob_fixups_user_type = {
         .replace_needed(
             'libtensorflowlite_c.so',
             'libtensorflowlite_c_vendor.so'
+    ),
+
+    'vendor/lib64/libultrahdr_prebuilt.so': blob_fixup()
+        .replace_needed(
+            'libjpegdecoder.so',
+            'libjpegdecoder_prebuilt.so'
+        )
+        .replace_needed(
+            'libjpegencoder.so',
+            'libjpegencoder_prebuilt.so'
     ),
 
     'vendor/lib64/libcameraopt.so': blob_fixup()
