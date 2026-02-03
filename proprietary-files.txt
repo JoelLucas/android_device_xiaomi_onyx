@@ -1,4 +1,4 @@
-# All unpinned blobs below are extracted from onyx OS2.0.204.0.VOLMIXM
+# All unpinned blobs below are extracted from onyx OS3.0.5.0.WOLMIXM
 
 # ACDB
 odm/etc/acdbdata/Fluence/Fluence_acdb_cal.acdb
@@ -37,6 +37,8 @@ odm/lib/rfsa/adsp/libmialgo_bokeh_depth_cdsp_skel.so
 odm/lib/rfsa/adsp/libmialgo_bokeh_effect_cdsp_skel.so
 odm/lib/rfsa/adsp/libmialgo_mc_bokeh_cdsp_skel.so
 odm/lib/rfsa/adsp/libmialgo_tracker_cdsp_skel.so
+vendor/lib/rfsa/adsp/activity.napp_header
+vendor/lib/rfsa/adsp/activity.so
 vendor/lib/rfsa/adsp/chre_qsh_shim.so
 vendor/lib/rfsa/adsp/libCalculator_skel.so
 vendor/lib/rfsa/adsp/libDspIOProxy_skel.so
@@ -73,6 +75,7 @@ odm/lib64/libawcal.so;DISABLE_CHECKELF
 odm/lib64/libcrussp.so;DISABLE_CHECKELF
 odm/lib64/libsiaalgocal.so;DISABLE_CHECKELF
 odm/lib64/libtfacal.so;DISABLE_CHECKELF
+odm/lib64/libwindns.so
 odm/lib64/vendor.xiaomi.hardware.mediaeventgatherservice-V1-ndk.so
 vendor/etc/audio_cloud_control_white_list.xml
 vendor/etc/models/acd/environment.eai
@@ -123,7 +126,6 @@ vendor/lib64/libtensorflowlite_c.so:vendor/lib64/libtensorflowlite_c_vendor.so;F
 vendor/lib64/libtiantongpal.so
 vendor/lib64/libvui_dmgr.so
 vendor/lib64/libvui_dmgr_client.so
-vendor/lib64/libwindns.so
 vendor/lib64/libxlog.so
 vendor/lib64/vendor.qti.hardware.ListenSoundModelAidl-V1-ndk.so
 vendor/lib64/vendor.qti.hardware.qasr-V2-ndk.so
@@ -176,7 +178,7 @@ vendor/etc/hrtf5c.bin
 
 # Bluetooth
 vendor/bin/hw/android.hardware.bluetooth@aidl-service-qti
-vendor/etc/init/android.hardware.bluetooth@aidl-service-qti.rc
+vendor/etc/init/android.hardware.bluetooth@aidl-service-qti-debug.rc
 vendor/etc/vintf/manifest/bluetooth-finder.xml
 vendor/etc/vintf/manifest/bluetooth_hci.xml
 vendor/etc/vintf/manifest/bluetooth_sar.xml
@@ -411,6 +413,7 @@ odm/etc/camera/cameracustomize.json
 odm/etc/camera/cameradfx_config.json
 odm/etc/camera/cameraopt.json
 odm/etc/camera/cameraopt_perf.json
+odm/etc/camera/camerascene.json
 odm/etc/camera/camxoverridesettings.txt
 odm/etc/camera/com.xiaomi.dcal.w_07.u_10.golden
 odm/etc/camera/com.xiaomi.dcal.w_10.u_01.golden
@@ -1130,8 +1133,11 @@ odm/etc/camera/xiaomi/thirdnormalpreview.json
 odm/etc/camera/xiaomi/thirdpartysnapshotjpeg.json
 odm/etc/camera/xiaomi/watermark/MiSans-Demibold.ttf
 odm/etc/camera/xiaomi/watermark/MiSans-Medium.ttf
-odm/etc/camera/xiaomi/watermark/Roboto-Bold.ttf
-odm/etc/camera/xiaomi/watermark/Roboto-Medium.ttf
+odm/etc/camera/xiaomi/watermark/MiSans-Regular.ttf
+odm/etc/camera/xiaomi/watermark/MiSansArabicVF.ttf
+odm/etc/camera/xiaomi/watermark/MiSansTibetanVF.ttf
+odm/etc/camera/xiaomi/watermark/Noto-COLRv1-emojicompat.ttf
+odm/etc/camera/xiaomi/watermark/Oxanium-Medium.ttf
 odm/etc/camera/xiaomi/watermark/ic_cv_film_logo.png
 odm/etc/camera/xiaomi/watermark/ic_cv_film_logo_white.png
 odm/etc/camera/xiaomi/watermark/ic_cv_logo.png
@@ -1257,6 +1263,7 @@ odm/lib64/camera/plugins/com.xiaomi.plugin.frontbokeh.so
 odm/lib64/camera/plugins/com.xiaomi.plugin.frontbokehpreview.so
 odm/lib64/camera/plugins/com.xiaomi.plugin.gainmap.so;DISABLE_CHECKELF
 odm/lib64/camera/plugins/com.xiaomi.plugin.gainmapPostProc.so
+odm/lib64/camera/plugins/com.xiaomi.plugin.heifedit.so
 odm/lib64/camera/plugins/com.xiaomi.plugin.jpegrAggr.so;DISABLE_CHECKELF
 odm/lib64/camera/plugins/com.xiaomi.plugin.ldc.so
 odm/lib64/camera/plugins/com.xiaomi.plugin.memcpy.so
@@ -1287,6 +1294,7 @@ odm/lib64/camera/plugins/com.xiaomi.plugin.swjpegencode.so
 odm/lib64/camera/plugins/com.xiaomi.plugin.tsskinbeautifier.so
 odm/lib64/camera/plugins/com.xiaomi.plugin.videofilter.so
 odm/lib64/camera/plugins/com.xiaomi.plugin.watermark.so
+odm/lib64/camera/plugins/com.xiaomi.plugin.yuv2Heic.so
 odm/lib64/camera/zsl/com.xiaomi.zsl.aihighlight.so
 odm/lib64/camera/zsl/com.xiaomi.zsl.bokehrawhdr.so
 odm/lib64/camera/zsl/com.xiaomi.zsl.bokehsmartae.so
@@ -1325,7 +1333,9 @@ odm/lib64/libarcsoft_turbo_hdr_detection.so
 odm/lib64/libarcsoft_turbo_hdr_grf.so
 odm/lib64/libarcsoft_turbo_hdr_raw.so
 odm/lib64/libcamera_scene.so
+odm/lib64/libcameraheif.so
 odm/lib64/libhandgesture.arcsoft.so
+odm/lib64/libheichal.so
 odm/lib64/libmiSAT.so;FIX_SONAME
 odm/lib64/libmiSATTranslate.so
 odm/lib64/libmiStereoCalibLib_qual.so
@@ -2076,6 +2086,7 @@ vendor/lib64/libscveCommon_stub.so
 vendor/lib64/libscveObjectSegmentation.so
 vendor/lib64/libscveObjectTracker.so
 vendor/lib64/libscveObjectTracker_stub.so
+vendor/lib64/libvideoservice_utils.so
 vendor/lib64/libvideoutils.so
 
 # Computer vision firmware
@@ -2476,10 +2487,15 @@ odm/lib64/libgf_hal.so
 vendor/lib64/vendor.xiaomi.hardware.fx.tunnel-V1-ndk.so
 
 # GNSS
+odm/bin/hw/android.hardware.gnss-aidl-service-qti
+odm/etc/init/android.hardware.gnss-aidl-service-qti.rc
 odm/etc/izat_device.conf
+odm/etc/vintf/manifest/android.hardware.gnss-aidl-service-qti.xml
+odm/etc/vintf/manifest/vendor.qti.gnss-service.xml
+odm/lib64/vendor.qti.gnss-V7-ndk.so
+odm/lib64/vendor.qti.gnss-service.so
 vendor/bin/edgnss-daemon
 vendor/bin/engine-service
-vendor/bin/hw/android.hardware.gnss-aidl-service-qti
 vendor/bin/loc_launcher
 vendor/bin/lowi-server
 vendor/bin/mlid
@@ -2489,7 +2505,6 @@ vendor/bin/xtwifi-client
 vendor/etc/apdr.conf
 vendor/etc/gps.conf
 vendor/etc/gps_diag.cfg
-vendor/etc/init/android.hardware.gnss-aidl-service-qti.rc
 vendor/etc/init/loc-launcher.rc
 vendor/etc/init/vendor.qsap.location.rc
 vendor/etc/lowi.conf
@@ -2499,8 +2514,6 @@ vendor/etc/seccomp_policy/gnss@2.0-edgnss-daemon.policy
 vendor/etc/seccomp_policy/gnss@2.0-qsap-location.policy
 vendor/etc/seccomp_policy/gnss@2.0-xtra-daemon.policy
 vendor/etc/seccomp_policy/gnss@2.0-xtwifi-client.policy
-vendor/etc/vintf/manifest/android.hardware.gnss-aidl-service-qti.xml
-vendor/etc/vintf/manifest/vendor.qti.gnss-service.xml
 vendor/etc/xtwifi.conf
 vendor/lib64/hw/android.hardware.gnss-aidl-impl-qti.so
 vendor/lib64/libMiVDR.so
@@ -2545,8 +2558,6 @@ vendor/lib64/libsynergy_loc_api.so
 vendor/lib64/libsys_info_cache.so
 vendor/lib64/libwifiobserver.so
 vendor/lib64/libxtadapter.so
-vendor/lib64/vendor.qti.gnss-V7-ndk.so
-vendor/lib64/vendor.qti.gnss-service.so
 
 # Gatekeeper
 vendor/bin/hw/android.hardware.gatekeeper-service-qti
@@ -2712,7 +2723,7 @@ odm/etc/init/vendor.xiaomi.hardware.mlipay-service.rc
 odm/etc/vintf/manifest/manifest_vendor.xiaomi.hardware.mlipay.xml
 odm/lib64/libmlipay.so
 vendor/lib64/libesesbprovision.so
-vendor/lib64/vendor.xiaomi.hardware.mlipay-V1-ndk_platform.so
+vendor/lib64/vendor.xiaomi.hardware.mlipay-V1-ndk.so
 
 # NFC
 odm/etc/libnfc-nci.conf:vendor/etc/libnfc-nci.conf
@@ -2802,7 +2813,7 @@ vendor/bin/init.qti.qcv.sh
 vendor/etc/init/init.qti.qcv.rc
 
 # QESDK
-system_ext/app/QesdkSysService/QesdkSysService.apk
+system_ext/app/FrameworksUtilsSysService/FrameworksUtilsSysService.apk
 system_ext/etc/vintf/manifest/vendor.qti.qesdsys.service.xml
 system_ext/lib64/libqesdk_ndk_platform.qti.so
 vendor/bin/qesdk-manager
@@ -2893,7 +2904,6 @@ product/framework/uimgbamanagerlibrary.jar
 product/framework/uimservicelibrary.jar
 system/etc/sysconfig/qti_whitelist.xml
 system_ext/app/AtFwd2/AtFwd2.apk
-system_ext/app/ImsRcsService/ImsRcsService.apk
 system_ext/app/QtiTelephonyService/QtiTelephonyService.apk
 system_ext/etc/permissions/qcrilhook.xml
 system_ext/etc/permissions/qti_permissions.xml
@@ -2923,6 +2933,7 @@ system_ext/lib64/lib-imsvtutils.so
 system_ext/lib64/libimscamera_jni.so;SYMLINK=system_ext/priv-app/ims/lib/arm64/libimscamera_jni.so
 system_ext/lib64/libimsmedia_jni.so;SYMLINK=system_ext/priv-app/ims/lib/arm64/libimsmedia_jni.so
 system_ext/lib64/vendor.qti.ImsRtpService-V1-ndk.so
+system_ext/lib64/vendor.qti.ImsRtpService-V2-ndk.so
 system_ext/lib64/vendor.qti.ims.uceaidlservice-V1-ndk.so
 system_ext/lib64/vendor.qti.imsrtpservice@3.0.so
 system_ext/lib64/vendor.qti.imsrtpservice@3.1.so
@@ -3249,15 +3260,11 @@ vendor/lib64/vendor.qti.hardware.sensorscalibrate-V1-ndk.so
 
 # Sensors (configs)
 odm/etc/sensors/config/ak7323.json
-odm/etc/sensors/config/bonito_qsh_ble_0.json
 odm/etc/sensors/config/chre_dynamic_sensors.json
-odm/etc/sensors/config/eliza_qsh_ble_0.json
 odm/etc/sensors/config/json.lst
 odm/etc/sensors/config/lightSensorConfig.json
 odm/etc/sensors/config/lightSensorConfigSec.json
 odm/etc/sensors/config/pakala_ccd_base.json
-odm/etc/sensors/config/pakala_qsh_ble_0.json
-odm/etc/sensors/config/qsh_ble.json
 odm/etc/sensors/config/qsh_camera_aon_front_i_1.json
 odm/etc/sensors/config/qsh_camera_aon_front_ii_1.json
 odm/etc/sensors/config/qsh_camera_common.json

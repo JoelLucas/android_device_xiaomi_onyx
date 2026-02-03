@@ -78,6 +78,9 @@
 /mnt/vendor/persist/goodix(/.*)? u:object_r:fingerprint_vendor_data_file:s0
 /vendor/bin/hw/android\.hardware\.biometrics\.fingerprint-service\.xiaomi u:object_r:hal_fingerprint_default_exec:s0
 
+# GNSS
+/(odm|vendor|vendor/odm|system/vendor/odm)/bin/hw/android\.hardware\.gnss.*-service-qti u:object_r:vendor_hal_gnss_qti_exec:s0
+
 # HypSys
 /vendor/bin/hw/xiaomi\.system\.hypsys\.common-service-dummy    u:object_r:hal_hypsys_vendor_exec:s0
 

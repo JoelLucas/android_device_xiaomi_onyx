@@ -82,14 +82,23 @@ function set_density_by_fb() {
             "dada")
             setprop vendor.display.lcd_density 520
             ;;
-	    "bixi")
+            "bixi")
             setprop vendor.display.lcd_density 520
-	    ;;
+            ;;
             "onyx")
             setprop vendor.display.lcd_density 520
             ;;
             "luming")
             setprop vendor.display.lcd_density 520
+            ;;
+            "yupei")
+            setprop vendor.display.lcd_density 440
+            ;;
+            "piano")
+            setprop vendor.display.lcd_density 440
+            ;;
+            "annibale")
+            setprop vendor.display.lcd_density 480
             ;;
             *)
             setprop vendor.display.lcd_density 440
@@ -120,13 +129,22 @@ function set_density_by_fb() {
             setprop vendor.display.lcd_density 520
             ;;
             "bixi")
-	    setprop vendor.display.lcd_density 520
-	    ;;
+            setprop vendor.display.lcd_density 520
+            ;;
             "onyx")
             setprop vendor.display.lcd_density 520
             ;;
             "luming")
             setprop vendor.display.lcd_density 520
+            ;;
+            "yupei")
+            setprop vendor.display.lcd_density 440
+            ;;
+            "piano")
+            setprop vendor.display.lcd_density 440
+            ;;
+            "annibale")
+            setprop vendor.display.lcd_density 480
             ;;
         esac
     fi
@@ -450,6 +468,24 @@ case "$target" in
     "holi")
         setprop vendor.media.target_variant "_holi"
         ;;
+    "sun")
+        setprop vendor.display.supports_background_blur 1
+        case "$soc_hwid" in
+            655|681|659|694|686)
+                setprop vendor.display.supports_background_blur 0
+                ;;
+        esac
+        ;;
+esac
+
+device=`getprop ro.product.device`
+case "$device" in
+    "luming")
+    setprop vendor.display.supports_background_blur 1
+    ;;
+    "onyx")
+    setprop vendor.display.supports_background_blur 1
+    ;;
 esac
 
 baseband=`getprop ro.baseband`

@@ -54,7 +54,6 @@ SPDX-License-Identifier: BSD-3-Clause-Clear
         <mixPort name="hifi_playback" role="source">
         </mixPort>
         <mixPort name="mmap_no_irq_out" role="source" flags="DIRECT MMAP_NOIRQ">
-            <profile samplingRates="48000" channelLayouts="LAYOUT_STEREO" formatType="PCM" pcmType="INT_16_BIT" />
             <profile samplingRates="48000" channelLayouts="LAYOUT_STEREO" formatType="PCM" pcmType="FIXED_Q_8_24" />
             <profile samplingRates="48000" channelLayouts="LAYOUT_STEREO" formatType="PCM" pcmType="INT_24_BIT" />
             <profile samplingRates="48000" channelLayouts="LAYOUT_STEREO" formatType="PCM" pcmType="INT_32_BIT" />
@@ -80,6 +79,7 @@ SPDX-License-Identifier: BSD-3-Clause-Clear
             <profile name="compress-capture-AAC-HE-V2" samplingRates="24000 32000 44100 48000" channelLayouts="LAYOUT_STEREO" formatType="NON_PCM" encoding="audio/aac-adts.29" />
         </mixPort>
         <mixPort name="record_24" role="sink" maxOpenCount="2" maxActiveCount="2">
+            <profile samplingRates="8000 11025 12000 16000 22050 24000 32000 44100 48000 96000 192000" channelLayouts="LAYOUT_MONO LAYOUT_STEREO LAYOUT_FRONT_BACK" channelMasks="INDEX_MASK_3 INDEX_MASK_4" formatType="PCM" pcmType="INT_16_BIT" />
             <profile samplingRates="8000 11025 12000 16000 22050 24000 32000 44100 48000 96000 192000" channelLayouts="LAYOUT_MONO LAYOUT_STEREO LAYOUT_FRONT_BACK" channelMasks="INDEX_MASK_3 INDEX_MASK_4" formatType="PCM" pcmType="INT_24_BIT" />
             <profile samplingRates="8000 11025 12000 16000 22050 24000 32000 44100 48000 96000 192000" channelLayouts="LAYOUT_MONO LAYOUT_STEREO LAYOUT_FRONT_BACK" channelMasks="INDEX_MASK_3 INDEX_MASK_4" formatType="PCM" pcmType="FIXED_Q_8_24" />
         </mixPort>

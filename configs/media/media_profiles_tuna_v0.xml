@@ -386,9 +386,9 @@
 
     <EncoderProfile quality="timelapse4kdci" fileFormat="mp4" duration="30">
       <Video codec="h264"
-            bitRate="57500000"
-            width="4096"
-            height="2160"
+            bitRate="30000000"
+            width="2816"
+            height="1584"
             frameRate="30" />
 
       <Audio codec="aac"
@@ -973,9 +973,9 @@
 
     <EncoderProfile quality="timelapse4kdci" fileFormat="mp4" duration="30">
       <Video codec="h264"
-            bitRate="57500000"
-            width="4096"
-            height="2160"
+            bitRate="30000000"
+            width="2816"
+            height="1584"
             frameRate="30" />
 
       <Audio codec="aac"
@@ -1359,9 +1359,9 @@
 
     <EncoderProfile quality="timelapse4kdci" fileFormat="mp4" duration="30">
       <Video codec="h264"
-            bitRate="57500000"
-            width="4096"
-            height="2160"
+            bitRate="30000000"
+            width="2816"
+            height="1584"
             frameRate="30" />
 
       <Audio codec="aac"
@@ -1394,20 +1394,6 @@
             bitRate="156000"
             sampleRate="48000"
             channels="2" />
-    </EncoderProfile>
-
-    <EncoderProfile quality="highspeed1080p" fileFormat="mp4" duration="30">
-      <Video codec="h264"
-             bitRate="50000000"
-             width="1920"
-             height="1080"
-             frameRate="120" />
-
-      <!-- audio setting is ignored -->
-      <Audio codec="aac"
-             bitRate="96000"
-             sampleRate="48000"
-             channels="1" />
     </EncoderProfile>
 
     <EncoderProfile quality="highspeedhigh" fileFormat="mp4" duration="30">
@@ -1731,9 +1717,9 @@
 
     <EncoderProfile quality="timelapse4kdci" fileFormat="mp4" duration="30">
       <Video codec="h264"
-            bitRate="57500000"
-            width="4096"
-            height="2160"
+            bitRate="30000000"
+            width="2816"
+            height="1584"
             frameRate="30" />
 
       <Audio codec="aac"

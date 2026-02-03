@@ -39,7 +39,7 @@ case "$platformid" in
 		#Pass as an argument the max number of clusters supported on the SOC
 		/vendor/bin/sh /vendor/bin/init.kernel.post_boot-sun.sh 2
 		;;
-	"655"|"681")
+	"655"|"681"|"694")
 		/vendor/bin/sh /vendor/bin/init.kernel.post_boot-tuna.sh 4
 		;;
 	"686"|"659")

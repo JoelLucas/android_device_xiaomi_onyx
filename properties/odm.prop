@@ -8,7 +8,7 @@ persist.vendor.audio.fpsop.game.effect=true
 persist.vendor.audio.game.effect.version=2
 persist.vendor.audio.induce_crash=false
 persist.vendor.audio.induce_crash_generic=false
-persist.vendor.audio.miExceptionCheck.enable=true
+persist.vendor.audio.mi.perception=9
 persist.vendor.audio.spf_restart=true
 ro.vendor.audio.algorithm.support=Fluence
 ro.vendor.audio.aw.monitor=true
@@ -31,8 +31,16 @@ vendor.audio.cpu.sched.cpuset.at=255
 vendor.audio.cpu.sched.cpuset.hb=255
 vendor.audio.cpu.sched.cpuset.he=255
 vendor.audio.cpu.sched.cpuset.hso=255
+vendor.audio.cpu.sched.douyin=31
+vendor.audio.cpu.sched.douyin.cpus=8
+vendor.audio.cpu.sched.douyin.cpuset.af=63
+vendor.audio.cpu.sched.douyin.cpuset.at=63
+vendor.audio.cpu.sched.douyin.cpuset.hb=63
+vendor.audio.cpu.sched.douyin.cpuset.he=63
+vendor.audio.cpu.sched.douyin.cpuset.hso=63
 vendor.audio.cpu.sched.onlyfast=false
 vendor.audio.cpu.sched=31
+vendor.audio.only.douyin.powersave.support=1
 vendor.audio.rt.mode.onlyfast=false
 vendor.audio.rt.mode=55
 vendor.audio.support.16bit.record=true
@@ -44,10 +52,10 @@ persist.vendor.region.charger=default
 ro.bluetooth.finder.supported=true
 
 # Camera
-persist.vendor.camera.cameramind.supported=true
 ro.vendor.dynamiccamera.ability_level=2
 ro.camerax.extensions.enabled=false
 ro.camera.disableJpegR=true
+ro.camera.disableHeicUltraHDR=true
 
 # CIT
 persist.vendor.debug.collision.dfx=true
@@ -101,7 +109,7 @@ ro.telephony.default_network=33,33
 persist.vendor.radio.dynamic_sar=1
 
 # Sensor
-persist.vendor.sensors.debug.hal_trigger_ssr=true
+persist.vendor.sensors.debug.hal_trigger_crash=true
 
 # SSR
 persist.vendor.ssr.restart_level=ALL_ENABLE

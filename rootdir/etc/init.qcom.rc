@@ -258,12 +258,6 @@ on boot
     chmod 0664 /dev/mi_mem_engine/scene_tid
     # END Performance_UnfairMem
 
-    # MIUI ADD: Performance_LogEnhance
-    chmod 0666 /dev/mi_exception_log
-    chown system system /proc/mi_log/binder_delay
-    chown system system /proc/mi_log/delay
-    # END Performance_LogEnhance
-
     # Create directory used for display
     # for backward compatibility
     mkdir /persist/display 0770 system graphics
@@ -319,6 +313,9 @@ on post-fs-data
     mkdir /data/vendor/camera 0777 camera camera
     mkdir /data/vendor/camera/offlinelog 0777 cameraserver audio
     mkdir /data/vendor/camera/aftersalelog 0777 cameraserver audio
+    # MIUI ADD: Camera_PerformanceEnhance
+    mkdir /data/vendor/camera/overlay 0777 cameraserver audio
+    # END Camera_PerformanceEnhance
     # MIUI ADD: Camera_CameraSkyNet
     chmod 0666 /dev/camlog
     #END Camera_CameraSkyNet
@@ -891,7 +888,7 @@ service vendor.ssr_diag /system/vendor/bin/ssr_diag
     group system
     disabled
 
-service diag_mdlog_start /vendor/bin/diag_mdlog -q 2 -j 1 -u -c -i -n 50
+service diag_mdlog_start /vendor/bin/diag_mdlog -q 0x2006 -j 1 -u -c -i -n 50
     class late_start
     user shell
     group system oem_2902 oem_2905 sdcard_rw sdcard_r media_rw
