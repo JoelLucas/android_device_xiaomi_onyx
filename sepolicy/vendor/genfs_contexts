@@ -5,8 +5,9 @@ genfscon proc /sys/vm/dirty_ratio u:object_r:proc_dirty:s0
 genfscon proc /sys/kernel/sched_migration_cost_ns u:object_r:proc_sched:s0
 
 # Gpu Boost 
-genfscon sysfs /sys/class/kgsl/kgsl-3d0/devfreq/available_frequencies u:object_r:sysfs_gpu:s0
-genfscon sysfs /sys/class/kgsl/kgsl-3d0/devfreq/min_freq u:object_r:sysfs_gpu:s0
+genfscon sysfs /class/kgsl/kgsl-3d0/devfreq/available_frequencies u:object_r:sysfs_gpu:s0
+genfscon sysfs /class/kgsl/kgsl-3d0/devfreq/min_freq u:object_r:sysfs_gpu:s0
+
 # Battery
 genfscon sysfs /class/qcom-battery u:object_r:vendor_sysfs_qcom_battery:s0
 
