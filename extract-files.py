@@ -77,6 +77,13 @@ blob_fixups: blob_fixups_user_type = {
         .regex_replace('xml=version', 'xml version'),
 
     (
+        'odm/firmware/o10u_nova_csot_thp_config.ini',
+        'odm/firmware/o10u_nova_tm_thp_config.ini'
+    ): blob_fixup()
+        .regex_replace('ic_rate_normal=120', 'ic_rate_normal=240')
+        .regex_replace('rate_normal=120', 'rate_normal=480'),
+
+    (
         'odm/lib64/libAncHumanPreviewBokeh.so',
         'odm/lib64/libMiEmojiEffect.so',
         'odm/lib64/libMiVideoFilter.so',
