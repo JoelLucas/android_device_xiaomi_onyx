@@ -1,8 +1,0 @@
-    # Permissions
-    chown system system /proc/xm_htc_report_rate
-    chmod 0664 /proc/xm_htc_report_rate
-
-service vendor.touch-hal /vendor/bin/hw/vendor.lineage.touch-service.onyx
-    class hal
-    user system
-    group system

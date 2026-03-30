@@ -121,7 +121,6 @@
 /(odm|vendor/odm|vendor|system/vendor)/bin/touch_report u:object_r:touchreport_exec:s0
 /(odm|vendor/odm|vendor|system/vendor)/bin/toucheventcheck u:object_r:tpevent_exec:s0
 /(vendor|odm)/etc/init.panel_info.sh u:object_r:vendor_touch_init_shell_exec:s0
-/vendor/bin/hw/vendor\.lineage\.touch-service\.onyx u:object_r:hal_lineage_touch_default_exec:s0
 /data/vendor/touch(/.*)? u:object_r:vendor_data_touchreport_file:s0
 /data/vendor/touch_state(/.*)? u:object_r:vendor_data_touchreport_file:s0
 /dev/xiaomi-touch u:object_r:touchfeature_device:s0

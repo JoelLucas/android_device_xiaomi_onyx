@@ -1,1 +1,0 @@
-allow hal_lineage_touch_default proc_tp_file:file rw_file_perms;
