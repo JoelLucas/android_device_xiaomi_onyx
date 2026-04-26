@@ -17,7 +17,6 @@ import android.os.Looper
 import android.os.UserHandle
 import android.provider.Settings
 import android.util.Log
-import com.xiaomi.settings.utils.FileUtils
 
 class TouchReportRateService : Service() {
 
@@ -78,25 +77,15 @@ class TouchReportRateService : Service() {
         private const val TOUCH_ID = 0
 
         // Mode numbers matching the kernel driver sequence from the logs
-        private const val MODE_GAME_MODE = 0           // DATA_MODE_0: main game mode switch — triggers
-                                                       // cmd_update_work which enables 500Hz+ IC scan rate
-        private const val MODE_HOT_AREA = 220          // DATA_MODE_50: touch exclusion hot area
-        private const val MODE_REPORT_RATE = 1011      // DATA_MODE_64: display rate notification
-        private const val MODE_REPORT_RATE_COMPANION = 1012 // DATA_MODE_65: companion parameter
-        private const val MODE_HIGH_SENSITIVITY = 201  // DATA_MODE_43: high sensitivity
-        private const val MODE_IDLE_HIGH_BASE = 204    // DATA_MODE_46: idle high baseline enable
-        private const val MODE_REPORT_RATE_SEL = 205   // DATA_MODE_47: rate selector (kernel requires
-                                                       // game mode ON to honour this; val!=1 → sends 8 to IC)
-        private const val MODE_THP_FEATURE = 1084      // DATA_MODE_137: THP feature flag
-        private const val MODE_IC_OP = 1000            // DATA_MODE_53: IC operating mode —
-                                                       // val=1 → nvt_set_extend_custom_cmd(0x01, 2)
-                                                       // switches IC to high-frequency scan state (500Hz+)
-
-        // Direct IC game-mode rate path: bypasses ioctl, calls nvt_set_extend_custom_cmd(0x0F, N)
-        // game_mode=0 → default rate, game_mode=1 → 240Hz, game_mode=2 → 500Hz+ (HyperOS uses this)
-        private const val PROC_GAME_MODE = "/proc/xm_htc_game_mode"
-        private const val PROC_GAME_MODE_ON = "2"
-        private const val PROC_GAME_MODE_OFF = "0"
+        private const val MODE_GAME_MODE = 0
+        private const val MODE_HIGH_SENSITIVITY = 201
+        private const val MODE_ACTIVE_MODE = 202
+        private const val MODE_IDLE_HIGH_BASE = 204
+        private const val MODE_REPORT_RATE_SEL = 205
+        private const val MODE_IC_OP = 1000
+        private const val MODE_REPORT_RATE = 1011
+        private const val MODE_REPORT_RATE_COMPANION = 1012
+        private const val MODE_THP_FEATURE = 1084
 
         private const val RATE_NORMAL = 120
         private const val RATE_HIGH = 240
@@ -116,38 +105,28 @@ class TouchReportRateService : Service() {
             if (DEBUG) Log.d(TAG, "applyReportRate: $value")
 
             if (value == 1) {
-                // Clear hot area before enabling game mode (matches observed log order)
-                TouchFeatureWrapper.setModeValue(TOUCH_ID, MODE_HOT_AREA, 0)
-                // Game mode ON — this is what actually enables 500Hz+ IC scanning via
-                // cmd_update_work → nvt_enable_game_mode. Without it, MODE_REPORT_RATE_SEL
-                // is ignored by the kernel and clamped to val=1.
-                TouchFeatureWrapper.setModeValue(TOUCH_ID, MODE_GAME_MODE, 1)
-                TouchFeatureWrapper.setModeValue(TOUCH_ID, MODE_REPORT_RATE, RATE_HIGH)
+                // Match stock order from kmsg traces.
+                TouchFeatureWrapper.setModeValue(TOUCH_ID, MODE_REPORT_RATE, RATE_NORMAL)
                 TouchFeatureWrapper.setModeValue(TOUCH_ID, MODE_REPORT_RATE_COMPANION, RATE_COMPANION)
+                TouchFeatureWrapper.setModeValue(TOUCH_ID, MODE_REPORT_RATE, RATE_HIGH)
+                TouchFeatureWrapper.setModeValue(TOUCH_ID, MODE_GAME_MODE, 1)
                 TouchFeatureWrapper.setModeValue(TOUCH_ID, MODE_HIGH_SENSITIVITY, 1)
-                TouchFeatureWrapper.setModeValue(TOUCH_ID, MODE_IDLE_HIGH_BASE, 1)
+                TouchFeatureWrapper.setModeValue(TOUCH_ID, MODE_REPORT_RATE, RATE_HIGH)
+                TouchFeatureWrapper.setModeValue(TOUCH_ID, MODE_ACTIVE_MODE, 1)
                 TouchFeatureWrapper.setModeValue(TOUCH_ID, MODE_THP_FEATURE, 1)
+                TouchFeatureWrapper.setModeValue(TOUCH_ID, MODE_IDLE_HIGH_BASE, 1)
                 TouchFeatureWrapper.setModeValue(TOUCH_ID, MODE_REPORT_RATE_SEL, 3)
-                // Switch IC to high-frequency scan state — must come last, after game mode
-                // and all parameters are applied
                 TouchFeatureWrapper.setModeValue(TOUCH_ID, MODE_IC_OP, 1)
-                // Direct procfs path: nvt_set_extend_custom_cmd(0x0F, 2) for 500Hz+
-                // This is separate from the ioctl path and is what HyperOS uses for 500Hz+
-                FileUtils.writeLine(PROC_GAME_MODE, PROC_GAME_MODE_ON)
             } else {
-                // Drop procfs game mode before tearing down ioctl modes
-                FileUtils.writeLine(PROC_GAME_MODE, PROC_GAME_MODE_OFF)
-                // Restore IC to normal operating mode first
                 TouchFeatureWrapper.setModeValue(TOUCH_ID, MODE_IC_OP, 0)
-                // Then tear down selectors/flags in reverse, disable game mode last
                 TouchFeatureWrapper.setModeValue(TOUCH_ID, MODE_REPORT_RATE_SEL, 0)
                 TouchFeatureWrapper.setModeValue(TOUCH_ID, MODE_THP_FEATURE, 0)
                 TouchFeatureWrapper.setModeValue(TOUCH_ID, MODE_IDLE_HIGH_BASE, 0)
+                TouchFeatureWrapper.setModeValue(TOUCH_ID, MODE_ACTIVE_MODE, 0)
                 TouchFeatureWrapper.setModeValue(TOUCH_ID, MODE_HIGH_SENSITIVITY, 0)
                 TouchFeatureWrapper.setModeValue(TOUCH_ID, MODE_GAME_MODE, 0)
                 TouchFeatureWrapper.setModeValue(TOUCH_ID, MODE_REPORT_RATE, RATE_NORMAL)
                 TouchFeatureWrapper.setModeValue(TOUCH_ID, MODE_REPORT_RATE_COMPANION, RATE_COMPANION)
-                TouchFeatureWrapper.setModeValue(TOUCH_ID, MODE_HOT_AREA, 0)
             }
         }
 
