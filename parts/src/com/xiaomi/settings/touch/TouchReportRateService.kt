@@ -106,12 +106,9 @@ class TouchReportRateService : Service() {
 
             if (value == 1) {
                 // Match stock order from kmsg traces.
-                TouchFeatureWrapper.setModeValue(TOUCH_ID, MODE_REPORT_RATE, RATE_NORMAL)
-                TouchFeatureWrapper.setModeValue(TOUCH_ID, MODE_REPORT_RATE_COMPANION, RATE_COMPANION)
                 TouchFeatureWrapper.setModeValue(TOUCH_ID, MODE_REPORT_RATE, RATE_HIGH)
                 TouchFeatureWrapper.setModeValue(TOUCH_ID, MODE_GAME_MODE, 1)
                 TouchFeatureWrapper.setModeValue(TOUCH_ID, MODE_HIGH_SENSITIVITY, 1)
-                TouchFeatureWrapper.setModeValue(TOUCH_ID, MODE_REPORT_RATE, RATE_HIGH)
                 TouchFeatureWrapper.setModeValue(TOUCH_ID, MODE_ACTIVE_MODE, 1)
                 TouchFeatureWrapper.setModeValue(TOUCH_ID, MODE_THP_FEATURE, 1)
                 TouchFeatureWrapper.setModeValue(TOUCH_ID, MODE_IDLE_HIGH_BASE, 1)
@@ -120,13 +117,12 @@ class TouchReportRateService : Service() {
             } else {
                 TouchFeatureWrapper.setModeValue(TOUCH_ID, MODE_IC_OP, 0)
                 TouchFeatureWrapper.setModeValue(TOUCH_ID, MODE_REPORT_RATE_SEL, 0)
-                TouchFeatureWrapper.setModeValue(TOUCH_ID, MODE_THP_FEATURE, 0)
                 TouchFeatureWrapper.setModeValue(TOUCH_ID, MODE_IDLE_HIGH_BASE, 0)
+                TouchFeatureWrapper.setModeValue(TOUCH_ID, MODE_THP_FEATURE, 0)
                 TouchFeatureWrapper.setModeValue(TOUCH_ID, MODE_ACTIVE_MODE, 0)
                 TouchFeatureWrapper.setModeValue(TOUCH_ID, MODE_HIGH_SENSITIVITY, 0)
                 TouchFeatureWrapper.setModeValue(TOUCH_ID, MODE_GAME_MODE, 0)
                 TouchFeatureWrapper.setModeValue(TOUCH_ID, MODE_REPORT_RATE, RATE_NORMAL)
-                TouchFeatureWrapper.setModeValue(TOUCH_ID, MODE_REPORT_RATE_COMPANION, RATE_COMPANION)
             }
         }
 
