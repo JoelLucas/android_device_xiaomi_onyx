@@ -16,4 +16,15 @@
         android:title="@string/touch_high_sampling_rate_footer"
         android:selectable="false" />
 
+    <PreferenceCategory
+        android:title="@string/touch_game_mode_category_title">
+
+        <SwitchPreference
+            android:key="touch_game_mode"
+            android:title="@string/touch_game_mode_title"
+            android:summary="@string/touch_game_mode_summary"
+            android:enabled="false" />
+
+    </PreferenceCategory>
+
 </PreferenceScreen>

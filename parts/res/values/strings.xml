@@ -11,4 +11,9 @@
     <string name="touch_title">Touch Sampling Rate</string>
     <string name="touch_high_sampling_rate_title">High Touch Sampling Rate</string>
     <string name="touch_high_sampling_rate_footer">Increase touchscreen polling rate</string>
+
+    <!-- Touch game mode -->
+    <string name="touch_game_mode_category_title">Game Mode</string>
+    <string name="touch_game_mode_title">Touch Game Mode</string>
+    <string name="touch_game_mode_summary">Optimise touch sensitivity, idle baseline and report rate for gaming</string>
 </resources>
