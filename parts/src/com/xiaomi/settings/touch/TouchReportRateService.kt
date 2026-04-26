@@ -75,9 +75,23 @@ class TouchReportRateService : Service() {
         const val SETTING_KEY = "touch_high_sampling_rate"
         private const val DEFAULT_VALUE = 0
         private const val TOUCH_ID = 0
-        private const val TOUCH_REPORT_RATE_MODE = 5
+
+        // Mode numbers matching the kernel driver sequence from the logs
+        private const val MODE_GAME_MODE = 0           // DATA_MODE_0: main game mode switch — triggers
+                                                       // cmd_update_work which enables 500Hz+ IC scan rate
+        private const val MODE_HOT_AREA = 220          // DATA_MODE_50: touch exclusion hot area
+        private const val MODE_REPORT_RATE = 1011      // DATA_MODE_64: display rate notification
+        private const val MODE_REPORT_RATE_COMPANION = 1012 // DATA_MODE_65: companion parameter
+        private const val MODE_HIGH_SENSITIVITY = 201  // DATA_MODE_43: high sensitivity
+        private const val MODE_IDLE_HIGH_BASE = 204    // DATA_MODE_46: idle high baseline enable
+        private const val MODE_REPORT_RATE_SEL = 205   // DATA_MODE_47: rate selector (kernel requires
+                                                       // game mode ON to honour this; val!=1 → sends 8 to IC)
+        private const val MODE_THP_FEATURE = 1084      // DATA_MODE_137: THP feature flag
+
         private const val RATE_NORMAL = 120
         private const val RATE_HIGH = 240
+        // Fixed companion value for this panel (120Hz base = 119)
+        private const val RATE_COMPANION = 119
 
         fun isReportRateWritable(): Boolean = TouchFeatureWrapper.isServiceAvailable()
 
@@ -90,11 +104,31 @@ class TouchReportRateService : Service() {
                     UserHandle.USER_CURRENT,
                 )
             if (DEBUG) Log.d(TAG, "applyReportRate: $value")
-            TouchFeatureWrapper.setModeValue(
-                TOUCH_ID,
-                TOUCH_REPORT_RATE_MODE,
-                if (value == 1) RATE_HIGH else RATE_NORMAL,
-            )
+
+            if (value == 1) {
+                // Clear hot area before enabling game mode (matches observed log order)
+                TouchFeatureWrapper.setModeValue(TOUCH_ID, MODE_HOT_AREA, 0)
+                // Game mode ON — this is what actually enables 500Hz+ IC scanning via
+                // cmd_update_work → nvt_enable_game_mode. Without it, MODE_REPORT_RATE_SEL
+                // is ignored by the kernel and clamped to val=1.
+                TouchFeatureWrapper.setModeValue(TOUCH_ID, MODE_GAME_MODE, 1)
+                TouchFeatureWrapper.setModeValue(TOUCH_ID, MODE_REPORT_RATE, RATE_HIGH)
+                TouchFeatureWrapper.setModeValue(TOUCH_ID, MODE_REPORT_RATE_COMPANION, RATE_COMPANION)
+                TouchFeatureWrapper.setModeValue(TOUCH_ID, MODE_HIGH_SENSITIVITY, 1)
+                TouchFeatureWrapper.setModeValue(TOUCH_ID, MODE_IDLE_HIGH_BASE, 1)
+                TouchFeatureWrapper.setModeValue(TOUCH_ID, MODE_THP_FEATURE, 1)
+                TouchFeatureWrapper.setModeValue(TOUCH_ID, MODE_REPORT_RATE_SEL, 3)
+            } else {
+                // Restore in reverse: tear down selectors/flags first, then disable game mode
+                TouchFeatureWrapper.setModeValue(TOUCH_ID, MODE_REPORT_RATE_SEL, 0)
+                TouchFeatureWrapper.setModeValue(TOUCH_ID, MODE_THP_FEATURE, 0)
+                TouchFeatureWrapper.setModeValue(TOUCH_ID, MODE_IDLE_HIGH_BASE, 0)
+                TouchFeatureWrapper.setModeValue(TOUCH_ID, MODE_HIGH_SENSITIVITY, 0)
+                TouchFeatureWrapper.setModeValue(TOUCH_ID, MODE_GAME_MODE, 0)
+                TouchFeatureWrapper.setModeValue(TOUCH_ID, MODE_REPORT_RATE, RATE_NORMAL)
+                TouchFeatureWrapper.setModeValue(TOUCH_ID, MODE_REPORT_RATE_COMPANION, RATE_COMPANION)
+                TouchFeatureWrapper.setModeValue(TOUCH_ID, MODE_HOT_AREA, 0)
+            }
         }
 
         fun startService(context: Context) {

@@ -10,7 +10,6 @@ import android.content.Context
 import android.content.Intent
 import android.util.Log
 import com.xiaomi.settings.display.ColorService
-import com.xiaomi.settings.touch.TouchGameModeService
 import com.xiaomi.settings.touch.TouchReportRateService
 
 class BootCompletedReceiver : BroadcastReceiver() {
@@ -32,7 +31,6 @@ class BootCompletedReceiver : BroadcastReceiver() {
 
         // Touch
         TouchReportRateService.startService(context)
-        TouchGameModeService.startService(context)
     }
 
     companion object {
