@@ -109,9 +109,7 @@ class TouchReportRateService : Service() {
                 TouchFeatureWrapper.setModeValue(TOUCH_ID, MODE_REPORT_RATE, RATE_HIGH)
                 TouchFeatureWrapper.setModeValue(TOUCH_ID, MODE_GAME_MODE, 1)
                 TouchFeatureWrapper.setModeValue(TOUCH_ID, MODE_ACTIVE_MODE, 1)
-                TouchFeatureWrapper.setModeValue(TOUCH_ID, MODE_IDLE_HIGH_BASE, 1)
             } else {
-                TouchFeatureWrapper.setModeValue(TOUCH_ID, MODE_IDLE_HIGH_BASE, 0)
                 TouchFeatureWrapper.setModeValue(TOUCH_ID, MODE_ACTIVE_MODE, 0)
                 TouchFeatureWrapper.setModeValue(TOUCH_ID, MODE_GAME_MODE, 0)
                 TouchFeatureWrapper.setModeValue(TOUCH_ID, MODE_REPORT_RATE, RATE_NORMAL)
