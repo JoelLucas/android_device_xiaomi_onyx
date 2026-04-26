@@ -17,6 +17,7 @@ import android.os.Looper
 import android.os.UserHandle
 import android.provider.Settings
 import android.util.Log
+import com.xiaomi.settings.utils.FileUtils
 
 class TouchReportRateService : Service() {
 
@@ -87,6 +88,15 @@ class TouchReportRateService : Service() {
         private const val MODE_REPORT_RATE_SEL = 205   // DATA_MODE_47: rate selector (kernel requires
                                                        // game mode ON to honour this; val!=1 → sends 8 to IC)
         private const val MODE_THP_FEATURE = 1084      // DATA_MODE_137: THP feature flag
+        private const val MODE_IC_OP = 1000            // DATA_MODE_53: IC operating mode —
+                                                       // val=1 → nvt_set_extend_custom_cmd(0x01, 2)
+                                                       // switches IC to high-frequency scan state (500Hz+)
+
+        // Direct IC game-mode rate path: bypasses ioctl, calls nvt_set_extend_custom_cmd(0x0F, N)
+        // game_mode=0 → default rate, game_mode=1 → 240Hz, game_mode=2 → 500Hz+ (HyperOS uses this)
+        private const val PROC_GAME_MODE = "/proc/xm_htc_game_mode"
+        private const val PROC_GAME_MODE_ON = "2"
+        private const val PROC_GAME_MODE_OFF = "0"
 
         private const val RATE_NORMAL = 120
         private const val RATE_HIGH = 240
@@ -118,8 +128,18 @@ class TouchReportRateService : Service() {
                 TouchFeatureWrapper.setModeValue(TOUCH_ID, MODE_IDLE_HIGH_BASE, 1)
                 TouchFeatureWrapper.setModeValue(TOUCH_ID, MODE_THP_FEATURE, 1)
                 TouchFeatureWrapper.setModeValue(TOUCH_ID, MODE_REPORT_RATE_SEL, 3)
+                // Switch IC to high-frequency scan state — must come last, after game mode
+                // and all parameters are applied
+                TouchFeatureWrapper.setModeValue(TOUCH_ID, MODE_IC_OP, 1)
+                // Direct procfs path: nvt_set_extend_custom_cmd(0x0F, 2) for 500Hz+
+                // This is separate from the ioctl path and is what HyperOS uses for 500Hz+
+                FileUtils.writeLine(PROC_GAME_MODE, PROC_GAME_MODE_ON)
             } else {
-                // Restore in reverse: tear down selectors/flags first, then disable game mode
+                // Drop procfs game mode before tearing down ioctl modes
+                FileUtils.writeLine(PROC_GAME_MODE, PROC_GAME_MODE_OFF)
+                // Restore IC to normal operating mode first
+                TouchFeatureWrapper.setModeValue(TOUCH_ID, MODE_IC_OP, 0)
+                // Then tear down selectors/flags in reverse, disable game mode last
                 TouchFeatureWrapper.setModeValue(TOUCH_ID, MODE_REPORT_RATE_SEL, 0)
                 TouchFeatureWrapper.setModeValue(TOUCH_ID, MODE_THP_FEATURE, 0)
                 TouchFeatureWrapper.setModeValue(TOUCH_ID, MODE_IDLE_HIGH_BASE, 0)
