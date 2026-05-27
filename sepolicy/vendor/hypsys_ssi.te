@@ -1,5 +1,7 @@
 type hypsys_ssi_default, coredomain, domain, mlstrustedsubject;
+type hypsys_ssi_default_exec, system_file_type, exec_type, file_type;
 
+init_daemon_domain(hypsys_ssi_default)
 binder_use(hypsys_ssi_default)
 hal_client_domain(hypsys_ssi_default, hal_misys_vendor)
 hal_server_domain(hypsys_ssi_default, hypsys_ssi)

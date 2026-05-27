@@ -68,10 +68,7 @@ lib_fixups: lib_fixups_user_type = {
 
 
 blob_fixups: blob_fixups_user_type = {
-    'system_ext/etc/init/hypsys_system.rc': blob_fixup()
-        .regex_replace(r' product_hyperengine', ''),
-
-    'system_ext/etc/vintf/manifest/vendor.qti.qesdsys.service.xml': blob_fixup()
+'system_ext/etc/vintf/manifest/vendor.qti.qesdsys.service.xml': blob_fixup()
         .regex_replace(r'(?s)^.*?(?=<manifest)', ''),
 
     'system_ext/lib64/libwfdmmsrc_system.so': blob_fixup()
