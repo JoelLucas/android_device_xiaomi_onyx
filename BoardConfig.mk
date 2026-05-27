@@ -96,9 +96,6 @@ BOARD_BOOTCONFIG := \
     androidboot.hypervisor.protected_vm.supported=true \
     androidboot.vendor.qspa=true
 
-BOARD_BOOTCONFIG += \
-    androidboot.selinux=permissive
-
 # Kernel (prebuilt)
 PREBUILT_PATH := $(DEVICE_PATH)-kernel
 TARGET_NO_KERNEL_OVERRIDE := true
