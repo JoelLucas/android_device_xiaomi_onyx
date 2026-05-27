@@ -326,6 +326,9 @@ blob_fixups: blob_fixups_user_type = {
     'vendor/lib64/vendor.libdpmframework.so': blob_fixup()
         .add_needed('libhidlbase_shim.so'),
 
+    'system/priv-app/MiuiCamera/MiuiCamera.apk': blob_fixup()
+        .apktool_patch('patches/MiuiCamera'),
+
     'system/lib64/libcamera_algoup_jni.xiaomi.so': blob_fixup()
         .add_needed('libgui_shim_miuicamera.so')
         .sig_replace('08 AD 40 F9', '08 A9 40 F9'),
