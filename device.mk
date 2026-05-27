@@ -496,9 +496,5 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/miuicamera-hiddenapi-package-allowlist.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/sysconfig/miuicamera-hiddenapi-package-allowlist.xml
 
-# miui-framework shared library declaration
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/miui-framework.xml:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/permissions/miui-framework.xml
-
 # Vendor
 $(call inherit-product, vendor/xiaomi/onyx/onyx-vendor.mk)
