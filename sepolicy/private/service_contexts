@@ -1,3 +1,6 @@
+# DisplayFeature
+displayfeature                                        u:object_r:displayfeature_service:s0
+
 # HypSys
 xiaomi.system.hypsys.common.IHypSysSsi/default       u:object_r:hypsys_ssi_service:s0
 xiaomi.system.hypsys.common.IHypSysSsiIntl/default   u:object_r:hypsys_ssi_service:s0

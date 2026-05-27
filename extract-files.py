@@ -129,7 +129,6 @@ blob_fixups: blob_fixups_user_type = {
         'odm/lib64/libsre.so',
         'odm/lib64/libtruetone.so',
         'odm/lib64/libvideomode.so',
-        'vendor/lib64/hw/camera.qcom.so',
         'vendor/lib64/libgnss.so'
     ): blob_fixup()
         .replace_needed(
@@ -165,7 +164,6 @@ blob_fixups: blob_fixups_user_type = {
         'vendor/lib64/libcamxods.so',
         'vendor/lib64/liblearningmodule.so',
         'vendor/lib64/libmicamera_aidl_provider.so',
-        'vendor/lib64/libmicamera_hal_core.so',
         'vendor/lib64/libpowercore.so',
         'vendor/lib64/libpsmoptfeature.so',
         'vendor/lib64/libsdmclient.so',
@@ -218,8 +216,89 @@ blob_fixups: blob_fixups_user_type = {
         .regex_replace('.*vl53l8.*\n?', ''),
 
     (
+        'vendor/lib64/libcom.xiaomi.metadatautils.so',
+        'vendor/lib64/libmicamera_hal_core.so'
+    ): blob_fixup()
+        .add_needed('libaudioutils_shim.so')
+        .replace_needed(
+            'libutils.so',
+            'libutils_stock.so'
+        )
+        .replace_needed(
+            'libcutils.so',
+            'libcutils_stock.so'
+        )
+        .replace_needed(
+            'libcamera_metadata.so',
+            'libcamera_metadata_stock.so'
+        )
+        .replace_needed(
+            'libc++.so',
+            'libc++_stock.so'
+    ),
+
+    # Replace additional dependencies with stock prebuilts to ensure consistent linking
+    'vendor/lib64/libmicamera_adapter.so': blob_fixup()
+        .replace_needed('libutils.so', 'libutils_stock.so')
+        .replace_needed('libcutils.so', 'libcutils_stock.so')
+        .replace_needed('libcamera_metadata.so', 'libcamera_metadata_stock.so')
+        .replace_needed('libhidlbase.so', 'libhidlbase_stock.so')
+        .replace_needed('libc++.so', 'libc++_stock.so'),
+
+    'vendor/lib64/hw/camera.qcom.so': blob_fixup()
+        .replace_needed('libutils.so', 'libutils_stock.so')
+        .replace_needed('libcutils.so', 'libcutils_stock.so')
+        .replace_needed('libcamera_metadata.so', 'libcamera_metadata_stock.so')
+        .replace_needed('libhidlbase.so', 'libhidlbase_stock.so')
+        .replace_needed('android.hardware.sensors-V2-ndk.so', 'android.hardware.sensors-V2-ndk_stock.so')
+        .replace_needed('libc++.so', 'libc++_stock.so'),
+
+    'vendor/lib64/hw/com.qti.chi.override.so': blob_fixup()
+        .replace_needed('libutils.so', 'libutils_stock.so')
+        .replace_needed('libcutils.so', 'libcutils_stock.so')
+        .replace_needed('libcamera_metadata.so', 'libcamera_metadata_stock.so')
+        .replace_needed('libhidlbase.so', 'libhidlbase_stock.so')
+        .replace_needed('libdmabufheap.so', 'libdmabufheap_stock.so')
+        .replace_needed('android.hardware.graphics.allocator-V1-ndk.so', 'android.hardware.graphics.allocator-V1-ndk_stock.so')
+        .replace_needed('android.hardware.graphics.allocator-V2-ndk.so', 'android.hardware.graphics.allocator-V2-ndk_stock.so')
+        .replace_needed('libc++.so', 'libc++_stock.so'),
+
+    'vendor/lib64/com.qti.feature2.rtmcx.sm8750.so': blob_fixup()
+        .replace_needed('libutils.so', 'libutils_stock.so')
+        .replace_needed('libcutils.so', 'libcutils_stock.so')
+        .replace_needed('libcamera_metadata.so', 'libcamera_metadata_stock.so')
+        .replace_needed('libhidlbase.so', 'libhidlbase_stock.so')
+        .replace_needed('libc++.so', 'libc++_stock.so'),
+    
+    # # Sigscan patches to avoid crashing metadata/postproc paths (quick test-only)
+    # 'vendor/lib64/libcom.xiaomi.metadatautils.so': blob_fixup()
+    #     .sig_replace(
+    #         '08 01 40 f9',  # original bytes at +0xa3d8
+    #         'c0 03 5f d6'   # RET (aarch64)
+    #     )
+    #     .sig_replace(
+    #         '5d 0c 00 94',  # original bytes at +0xa67c (BL)
+    #         '1f 20 03 d5'   # NOP
+    #     ),
+
+    # '': blob_fixup()
+    #     .sig_replace(
+    #         'e7 44 06 94',  # original bytes at +0x24f544 (BL)
+    #         '1f 20 03 d5'   # NOP
+    #     )
+    #     .sig_replace(
+    #         '5b 66 06 94',  # original bytes at +0x24995c (BL)
+    #         '1f 20 03 d5'   # NOP
+    #     ),
+
+    'vendor/lib64/android.hardware.graphics.allocator-V2-ndk_stock.so': blob_fixup()
+        .replace_needed(
+            'android.hardware.graphics.common-V5-ndk.so',
+            'android.hardware.graphics.common-V5-ndk_stock.so'
+    ),
+
+    (
         'vendor/lib64/camera/components/com.qti.node.dewarp.so',
-        'vendor/lib64/hw/com.qti.chi.override.so',
         'vendor/lib64/libcamximageformatutils.so',
         'vendor/lib64/libchifeature2.so',
         'vendor/lib64/libqvrservice.so',

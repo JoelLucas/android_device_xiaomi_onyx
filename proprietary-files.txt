@@ -1595,7 +1595,7 @@ vendor/lib64/com.qti.feature2.raw2yuvhdr.so
 vendor/lib64/com.qti.feature2.rawhdr.so
 vendor/lib64/com.qti.feature2.realtimeserializer.so
 vendor/lib64/com.qti.feature2.rt.so
-vendor/lib64/com.qti.feature2.rtmcx.sm8750.so
+
 vendor/lib64/com.qti.feature2.rtmcx.so
 vendor/lib64/com.qti.feature2.rtpostproc.sm8750.so
 vendor/lib64/com.qti.feature2.rtpostproc.so
@@ -1630,9 +1630,7 @@ vendor/lib64/com.xiaomi.immunesystem.hook.mivi.so
 vendor/lib64/com.xiaomi.immunesystem.hook.mtkhal.so
 vendor/lib64/com.xiaomi.messagecenter.so
 vendor/lib64/hw/camera.qcom.sm8750.so
-vendor/lib64/hw/camera.qcom.so
 vendor/lib64/hw/com.qti.chi.offline.so
-vendor/lib64/hw/com.qti.chi.override.so
 vendor/lib64/immunesystem.db.sqlite3.so
 vendor/lib64/libAF.so
 vendor/lib64/libDISAlgos.so
@@ -1692,7 +1690,6 @@ vendor/lib64/libcom.xiaomi.eventcallback.so
 vendor/lib64/libcom.xiaomi.grallocutils.so
 vendor/lib64/libcom.xiaomi.mawutils.so
 vendor/lib64/libcom.xiaomi.mawutilsold.so
-vendor/lib64/libcom.xiaomi.metadatautils.so
 vendor/lib64/libcom.xiaomi.offlinefeatureintf.so
 vendor/lib64/libcom.xiaomi.pluginutils.so
 vendor/lib64/libcom.xiaomi.qimagebuffer.so
@@ -1722,15 +1719,12 @@ vendor/lib64/libmfec.so
 vendor/lib64/libmialgo.so
 vendor/lib64/libmialgo_ai_vision.so
 vendor/lib64/libmialgo_aihighlight.so
-vendor/lib64/libmialgoengine.so
 vendor/lib64/libmialgoengine_custom.so
 vendor/lib64/libmicamGlobalPool.so
-vendor/lib64/libmicamera_adapter.so
 vendor/lib64/libmicamera_aidl_device.so;DISABLE_DEPS
 vendor/lib64/libmicamera_aidl_provider.so;DISABLE_DEPS
 vendor/lib64/libmicamera_aidl_utils.so;DISABLE_DEPS
 vendor/lib64/libmicamera_fps_checker.so
-vendor/lib64/libmicamera_hal_core.so
 vendor/lib64/libmicamera_hal_policy.so
 vendor/lib64/libminikin.xiaomi.so
 vendor/lib64/libmis_platform.so
@@ -3628,11 +3622,35 @@ vendor/lib64/vendor.qti.hardware.wifidisplaysessionl@1.0-halimpl.so
 vendor/bin/nv_mac
 vendor/lib64/libxiaomi_qmi.so
 
+# Meh
+vendor/lib64/libmialgoengine.so
+vendor/lib64/libmicamera_adapter.so
+vendor/lib64/hw/camera.qcom.so
+vendor/lib64/hw/com.qti.chi.override.so
+vendor/lib64/com.qti.feature2.rtmcx.sm8750.so
+vendor/lib64/libmicamera_hal_core.so
+vendor/lib64/libcom.xiaomi.metadatautils.so
+vendor/lib64/libutils.so:vendor/lib64/libutils_stock.so;FIX_SONAME
+vendor/lib64/libcutils.so:vendor/lib64/libcutils_stock.so;FIX_SONAME
+vendor/lib64/libcamera_metadata.so:vendor/lib64/libcamera_metadata_stock.so;FIX_SONAME
+vendor/lib64/libc++.so:vendor/lib64/libc++_stock.so;FIX_SONAME
+vendor/lib64/libdmabufheap.so:vendor/lib64/libdmabufheap_stock.so;FIX_SONAME
+vendor/lib64/libexif.so:vendor/lib64/libexif_stock.so;FIX_SONAME
+vendor/lib64/libjpeg.so:vendor/lib64/libjpeg_stock.so;FIX_SONAME
+vendor/lib64/libhidlbase.so:vendor/lib64/libhidlbase_stock.so;FIX_SONAME
+vendor/lib64/libprocessgroup.so:vendor/lib64/libprocessgroup_stock.so;FIX_SONAME
+vendor/lib64/libbinder.so:vendor/lib64/libbinder_stock.so;FIX_SONAME
+vendor/lib64/libtinyxml2.so:vendor/lib64/libtinyxml2_stock.so;FIX_SONAME
+vendor/lib64/android.hardware.graphics.allocator-V2-ndk.so:vendor/lib64/android.hardware.graphics.allocator-V2-ndk_stock.so;FIX_SONAME
+vendor/lib64/android.hardware.graphics.common-V5-ndk.so:vendor/lib64/android.hardware.graphics.common-V5-ndk_stock.so;FIX_SONAME
+vendor/lib64/android.hardware.sensors-V2-ndk.so:vendor/lib64/android.hardware.sensors-V2-ndk_stock.so;FIX_SONAME
+vendor/lib64/android.hardware.graphics.allocator-V1-ndk.so:vendor/lib64/android.hardware.graphics.allocator-V1-ndk_stock.so;FIX_SONAME
+
 # CameraMagic
-product/priv-app/MiuiCamera/MiuiCamera.apk:system/priv-app/MiuiCamera/MiuiCamera.apk
-system_ext/lib64/libcamera_algoup_jni.xiaomi.so:system/lib64/libcamera_algoup_jni.xiaomi.so
-system_ext/lib64/libcamera_mianode_jni.xiaomi.so:system/lib64/libcamera_mianode_jni.xiaomi.so
-system_ext/lib64/libmicampostproc_client.so:system/lib64/libmicampostproc_client.so
-system_ext/lib64/vendor.xiaomi.hardware.campostproc@1.0.so:system/lib64/vendor.xiaomi.hardware.campostproc@1.0.so;MODULE_SUFFIX=_system
-system_ext/framework/miui-framework.jar
+product/priv-app/MiuiCamera/MiuiCamera.apk:system/priv-app/MiuiCamera/MiuiCamera.apk|965f490f74e329eefc37704a2e46a7614e01ba4c|d867a7ca74b4fadb52f26460e6f0b315b3564582
+system_ext/lib64/libcamera_algoup_jni.xiaomi.so:system/lib64/libcamera_algoup_jni.xiaomi.so|794ad66fd82d57d2d22448ca0935c00bfae8b468|796ea38bff8b32382090b719565a92f016aa5561
+system_ext/lib64/libcamera_mianode_jni.xiaomi.so:system/lib64/libcamera_mianode_jni.xiaomi.so|79ff415204a4c8b8da8a470ae3dd5f85e347ef04|0d82f6b447017384854209209344e2e35fffde4b
+system_ext/lib64/libmicampostproc_client.so:system/lib64/libmicampostproc_client.so|5418fd041aa92cb0e0036dfc4122a5bcd2bb1ef4|c9d430f7b870ca0c3170b410bad739474503be38
+system_ext/lib64/vendor.xiaomi.hardware.campostproc@1.0.so:system/lib64/vendor.xiaomi.hardware.campostproc@1.0.so;MODULE_SUFFIX=_system|744617966aefde503147057ab4973b28f0e04363
+system_ext/framework/miui-framework.jar|1361f0af0de38fb05602416abb99ec6f36e72a8c
 

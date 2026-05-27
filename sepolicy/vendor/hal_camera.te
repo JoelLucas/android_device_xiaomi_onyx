@@ -46,3 +46,19 @@ allow hal_camera_server vendor_sysfs_xm_power:dir r_dir_perms;
 allow hal_camera_server vendor_sysfs_xm_power:file rw_file_perms;
 # miev device (MI event framework, used for capture events)
 allow hal_camera_default miev_device:chr_file { open write };
+
+# qspmhal: camera IPE pipeline uses this for perf/secure buffer management;
+# missing find causes null deref in IPENode::ExecuteProcessRequest (crash)
+allow hal_camera_default vendor_hal_qspmhal_service:service_manager find;
+
+# PSI (Pressure Stall Information) monitoring used by camera perf management
+allow hal_camera_default proc_pressure_cpu:file { open read };
+allow hal_camera_default proc_pressure_io:file { open read };
+allow hal_camera_default proc_meminfo:file { open read };
+
+# sysfs thermal/scheduler nodes (state, temp_aware) - probed, not critical
+dontaudit hal_camera_default sysfs:file read;
+
+# camera blob probes /data and /tmp for temp storage, fails gracefully
+dontaudit hal_camera_default system_data_file:dir search;
+dontaudit hal_camera_default shell_data_file:dir search;
