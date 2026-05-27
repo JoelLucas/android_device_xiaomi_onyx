@@ -1,0 +1,3 @@
+attribute hypsys_ssi;
+attribute hypsys_ssi_server;
+attribute hypsys_ssi_client;

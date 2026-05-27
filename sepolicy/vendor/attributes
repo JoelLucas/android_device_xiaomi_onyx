@@ -26,10 +26,6 @@ attribute hal_misyscore;
 attribute hal_misyscore_server;
 attribute hal_misyscore_client;
 
-attribute hypsys_ssi;
-attribute hypsys_ssi_server;
-attribute hypsys_ssi_client;
-
 # Mlipay
 attribute hal_mlipay;
 attribute hal_mlipay_server;

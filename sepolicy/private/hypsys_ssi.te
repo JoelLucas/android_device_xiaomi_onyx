@@ -1,0 +1,4 @@
+type hypsys_ssi_service, service_manager_type;
+
+allow hypsys_ssi_client hypsys_ssi_service:service_manager find;
+allow hypsys_ssi_server hypsys_ssi_service:service_manager { add find };
