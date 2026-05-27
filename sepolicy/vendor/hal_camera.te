@@ -1,6 +1,7 @@
 type hal_aidlbgservice_service, hal_service_type, protected_service, service_manager_type;
 type hal_camera_aon_service, hal_service_type, protected_service, service_manager_type;
 type hal_dynamic_camera_service, hal_service_type, protected_service, service_manager_type;
+type vendor_intentaware_service, hal_service_type, protected_service, service_manager_type;
 
 set_prop(hal_camera, vendor_camera_sensor_prop)
 set_prop(hal_camera_default, vendor_camera_p3enable_prop)
@@ -40,3 +41,27 @@ allow hal_camera_server hal_dynamic_camera_service:service_manager { add find };
 allow hal_camera_server hal_quickcamera_service:service_manager { add find };
 allow hal_camera_server vendor_sysfs_xm_power:dir r_dir_perms;
 allow hal_camera_server vendor_sysfs_xm_power:file rw_file_perms;
+
+# proc filesystem access
+allow hal_camera_default proc_meminfo:file { open read };
+allow hal_camera_default proc_pressure_cpu:file { getattr open read };
+allow hal_camera_default proc_pressure_io:file { getattr open read };
+
+# sysfs access (remoteproc CDSP state, thermal temp_aware)
+allow hal_camera_default sysfs:file { getattr open read };
+
+# Display feature sysfs traversal
+allow hal_camera_default vendor_sysfs_displayfeature:dir search;
+
+# QSPM HAL service lookup (enables camera.qcom.sm8750.so)
+allow hal_camera_default vendor_hal_qspmhal_service:service_manager find;
+
+# miev device (MI event framework, used for capture events)
+allow hal_camera_default miev_device:chr_file { open write };
+
+# IntentAware service (camera HAL registers and queries this)
+allow hal_camera_default vendor_intentaware_service:service_manager { add find };
+
+# Data directory traversal (EcoInfo.json lookup path)
+allow hal_camera_default shell_data_file:dir search;
+allow hal_camera_default system_data_file:dir search;
