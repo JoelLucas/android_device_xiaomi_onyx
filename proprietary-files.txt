@@ -157,7 +157,7 @@ odm/firmware/sipa.bin
 # Audio graph manager
 vendor/lib64/libagm.so;MAKE_COPY_RULE_ONLY
 vendor/lib64/libagmmixer.so
-vendor/lib64/libmisight.so
+vendor/lib64/libmisight.so;MODULE_SUFFIX=_vendor
 
 # Audio soundfx
 vendor/lib64/soundfx/libbundleaidl.so;DISABLE_DEPS
@@ -2643,6 +2643,28 @@ product/priv-app/HotwordEnrollmentXGoogleHEXAGON_WIDEBAND/HotwordEnrollmentXGoog
 product/priv-app/HotwordEnrollmentYGoogleHEXAGON_WIDEBAND/HotwordEnrollmentYGoogleHEXAGON_WIDEBAND.apk
 system_ext/etc/permissions/com.android.hotwordenrollment.common.util.xml
 system_ext/framework/com.android.hotwordenrollment.common.util.jar
+
+# Hypsys
+system_ext/bin/hypsys_system
+system_ext/etc/init/hypsys_system.rc
+system_ext/etc/vintf/manifest/manifest_hypsys_system.xml
+system_ext/lib64/libmisight.so
+system_ext/lib64/libmqsas.so
+system_ext/lib64/miui.mqsas.native-cpp.so
+system_ext/lib64/vendor.xiaomi.hardware.misys.common-V3-ndk.so
+system_ext/lib64/vendor.xiaomi.hardware.misys.core-V1-ndk.so
+system_ext/lib64/vendor.xiaomi.hardware.misys@1.0.so
+system_ext/lib64/vendor.xiaomi.hardware.misys@3.0.so
+vendor/bin/hw/vendor.xiaomi.hardware.misys.core-service
+vendor/bin/hypsys_vendor
+vendor/etc/init/hypsys_vendor.rc
+vendor/etc/init/vendor.xiaomi.hardware.misys.core-service.rc
+vendor/etc/vintf/manifest/manifest_blackbox.xml
+vendor/etc/vintf/manifest/vendor.xiaomi.hardware.misys.common.xml
+vendor/etc/vintf/manifest/vendor.xiaomi.hardware.misys.core.xml
+vendor/lib64/vendor.xiaomi.hardware.blackbox-V1-ndk.so;MODULE_SUFFIX=_vendor
+vendor/lib64/vendor.xiaomi.hardware.misys.common-V3-ndk.so;MODULE_SUFFIX=_vendor
+vendor/lib64/vendor.xiaomi.hardware.misys.core-V1-ndk.so;MODULE_SUFFIX=_vendor
 
 # IR
 odm/lib64/hw/consumerir.qcom.so

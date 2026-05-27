@@ -1,0 +1,20 @@
+type hal_misyscore_default, domain, mlstrustedsubject;
+type hal_misyscore_default_exec, exec_type, file_type, vendor_file_type;
+type hal_misyscore_service, protected_service, service_manager_type;
+
+binder_use(hal_misyscore_default)
+hal_server_domain(hal_misyscore_default, hal_misyscore)
+init_daemon_domain(hal_misyscore_default)
+
+allow hal_misyscore_client hal_misyscore_server:binder { call transfer };
+allow hal_misyscore_client hal_misyscore_server:fd *;
+allow hal_misyscore_client hal_misyscore_service:service_manager find;
+allow hal_misyscore_server dumpstate:fd *;
+allow hal_misyscore_server dumpstate:fifo_file write;
+allow hal_misyscore_server hal_misyscore_client:binder { call transfer };
+allow hal_misyscore_server hal_misyscore_client:fd *;
+allow hal_misyscore_server hal_misyscore_service:service_manager { add find };
+allow hal_misyscore_server servicemanager:binder { call transfer };
+allow hal_misyscore_server servicemanager:fd *;
+dontaudit hal_misyscore_default default_prop:file *;
+dontaudit hal_misyscore_default system_prop:file *;

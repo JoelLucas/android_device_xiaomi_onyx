@@ -1,0 +1,4 @@
+type hypsys_ssi_default, coredomain, domain, mlstrustedsubject;
+
+binder_use(hypsys_ssi_default)
+hal_client_domain(hypsys_ssi_default, hal_misys_vendor)

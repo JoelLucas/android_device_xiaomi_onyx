@@ -47,6 +47,7 @@ lib_fixups: lib_fixups_user_type = {
         'libvui_intf',
     ): lib_fixup_remove,
     (
+        'libmisight',
         'vendor.qti.diaghal-V1-ndk',
         'vendor.qti.diaghal@1.0',
         'vendor.qti.hardware.wifidisplaysession_aidl-V1-ndk',
@@ -54,11 +55,17 @@ lib_fixups: lib_fixups_user_type = {
         'vendor.qti.ImsRtpService-V1-ndk',
         'vendor.qti.qccsyshal_aidl-V1-ndk',
         'vendor.qti.qccvndhal_aidl-V1-ndk',
+        'vendor.xiaomi.hardware.blackbox-V1-ndk',
+        'vendor.xiaomi.hardware.misys.common-V3-ndk',
+        'vendor.xiaomi.hardware.misys.core-V1-ndk',
     ): lib_fixup_vendor_suffix,
 }
 
 
 blob_fixups: blob_fixups_user_type = {
+    'system_ext/etc/init/hypsys_system.rc': blob_fixup()
+        .regex_replace(r' product_hyperengine', ''),
+
     'system_ext/etc/vintf/manifest/vendor.qti.qesdsys.service.xml': blob_fixup()
         .regex_replace(r'(?s)^.*?(?=<manifest)', ''),
 
