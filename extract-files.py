@@ -33,6 +33,8 @@ namespace_imports = [
 def lib_fixup_vendor_suffix(lib: str, partition: str, *args, **kwargs):
     return f'{lib}_{partition}' if partition == 'vendor' else None
 
+def lib_fixup_system_suffix(lib: str, partition: str, *args, **kwargs):
+    return f'{lib}_{partition}' if partition == 'system' else None
 
 lib_fixups: lib_fixups_user_type = {
     **lib_fixups,
@@ -59,6 +61,9 @@ lib_fixups: lib_fixups_user_type = {
         'vendor.xiaomi.hardware.misys.common-V3-ndk',
         'vendor.xiaomi.hardware.misys.core-V1-ndk',
     ): lib_fixup_vendor_suffix,
+    (
+        'vendor.xiaomi.hardware.campostproc@1.0',
+    ): lib_fixup_system_suffix,
 }
 
 
@@ -320,6 +325,15 @@ blob_fixups: blob_fixups_user_type = {
 
     'vendor/lib64/vendor.libdpmframework.so': blob_fixup()
         .add_needed('libhidlbase_shim.so'),
+
+    'system/lib64/libcamera_algoup_jni.xiaomi.so': blob_fixup()
+        .add_needed('libgui_shim_miuicamera.so')
+        .sig_replace('08 AD 40 F9', '08 A9 40 F9'),
+    'system/lib64/libcamera_mianode_jni.xiaomi.so': blob_fixup()
+        .add_needed('libgui_shim_miuicamera.so'),
+    'system/lib64/libmicampostproc_client.so': blob_fixup()
+        .remove_needed('libhidltransport.so'),
+
 }  # fmt: skip
 
 module = ExtractUtilsModule(
