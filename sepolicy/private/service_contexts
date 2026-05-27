@@ -1,3 +1,5 @@
 # HypSys
 xiaomi.system.hypsys.common.IHypSysSsi/default       u:object_r:hypsys_ssi_service:s0
 xiaomi.system.hypsys.common.IHypSysSsiIntl/default   u:object_r:hypsys_ssi_service:s0
+miui.mqsas.IMQSNative                                 u:object_r:mqsasd_service:s0
+miui.mqsas.MQSService                                 u:object_r:mqs_service:s0

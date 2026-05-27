@@ -1,1 +1,4 @@
 /system_ext/bin/hypsys_system    u:object_r:hypsys_ssi_default_exec:s0
+
+/data/mqsas(/.*)?                u:object_r:mqsas_data_file:s0
+/data/miuilog/misight(/.*)?      u:object_r:data_log_misight_file:s0

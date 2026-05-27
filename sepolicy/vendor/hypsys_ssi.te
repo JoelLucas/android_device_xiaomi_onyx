@@ -5,3 +5,24 @@ init_daemon_domain(hypsys_ssi_default)
 binder_use(hypsys_ssi_default)
 hal_client_domain(hypsys_ssi_default, hal_misys_vendor)
 hal_server_domain(hypsys_ssi_default, hypsys_ssi)
+
+# Allow clients to binder-call the hypsys server
+binder_call(hypsys_ssi_client, hypsys_ssi_default)
+
+# Find misys vendor AIDL service (hal_client_domain assigns attribute but no find rule exists)
+allow hypsys_ssi_default hal_misys_vendor_service:service_manager find;
+
+# hypsys_system (hypsys_ssi_default) binder-calls hypsys_vendor (hal_misys_vendor_default)
+allow hypsys_ssi_default hal_misys_vendor_default:binder call;
+allow hal_misys_vendor_default hypsys_ssi_default:binder transfer;
+
+# CnssStatistic thread opens a netlink generic socket
+allow hypsys_ssi_default self:netlink_generic_socket create_socket_perms_no_ioctl;
+
+# BootMonitor writes MI event framework device
+allow hypsys_ssi_default miev_device:chr_file { open write };
+
+# Various threads scan /cache, /mnt/user, /dev/block
+allow hypsys_ssi_default cache_file:dir search;
+allow hypsys_ssi_default mnt_user_file:dir search;
+allow hypsys_ssi_default block_device:dir search;

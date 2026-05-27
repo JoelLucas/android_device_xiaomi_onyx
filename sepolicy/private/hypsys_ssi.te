@@ -1,4 +1,32 @@
 type hypsys_ssi_service, service_manager_type;
+# Legacy binder services registered/found by hypsys_system
+type mqsasd_service, service_manager_type;
+type mqs_service, service_manager_type;
+# Data file types for mqsas and misight (defined here since OEM system_ext policy is not included)
+type mqsas_data_file, file_type, data_file_type, core_data_file_type;
+type data_log_misight_file, file_type, data_file_type, core_data_file_type;
 
 allow hypsys_ssi_client hypsys_ssi_service:service_manager find;
 allow hypsys_ssi_server hypsys_ssi_service:service_manager { add find };
+allow hypsys_ssi_server mqsasd_service:service_manager add;
+allow hypsys_ssi_server mqs_service:service_manager find;
+
+# BootMonitor thread: write property socket + connect to init + set sys.boot_monitor_completed
+allow hypsys_ssi_server property_socket:sock_file write;
+allow hypsys_ssi_server init:unix_stream_socket connectto;
+allow hypsys_ssi_server system_prop:property_service set;
+
+# mqsas data dir access (BootMonitor, CaptureServer - /data/mqsas, /cache/mqsas)
+allow hypsys_ssi_server mqsas_data_file:dir { rw_dir_perms setattr };
+allow hypsys_ssi_server mqsas_data_file:file { create rw_file_perms };
+
+# misight log access (RescueSpace reads /data/miuilog/misight)
+allow hypsys_ssi_server data_log_misight_file:dir r_dir_perms;
+allow hypsys_ssi_server data_log_misight_file:file { r_file_perms setattr };
+
+# cache partition dir access (BootMonitor/RescueSpace/CaptureServer operate on /cache/mqsas etc.)
+allow hypsys_ssi_server cache_file:dir rw_dir_perms;
+allow hypsys_ssi_server cache_file:file { create unlink rw_file_perms };
+
+# BootMonitor opens/reads/writes rescue partition block device (sda23)
+allow hypsys_ssi_server block_device:blk_file { open read write };

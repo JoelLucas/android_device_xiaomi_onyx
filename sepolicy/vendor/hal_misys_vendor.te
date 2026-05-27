@@ -1,3 +1,14 @@
 type hal_misys_vendor_default, domain, mlstrustedsubject;
 type hal_misys_vendor_default_exec, exec_type, file_type, vendor_file_type;
 type hal_misys_vendor_service, protected_service, service_manager_type;
+
+init_daemon_domain(hal_misys_vendor_default)
+binder_use(hal_misys_vendor_default)
+
+allow hal_misys_vendor_default hal_misys_vendor_service:service_manager { add find };
+
+# Read /dev/kmsg (rc file opens it with 'file /dev/kmsg r')
+allow hal_misys_vendor_default kmsg_device:chr_file read;
+
+# hal_misys_vendor_default is a client of hypsys_ssi (finds IHypSysSsiIntl/default)
+typeattribute hal_misys_vendor_default hypsys_ssi_client;
