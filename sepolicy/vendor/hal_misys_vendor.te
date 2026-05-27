@@ -1,9 +1,11 @@
 type hal_misys_vendor_default, domain, mlstrustedsubject;
 type hal_misys_vendor_default_exec, exec_type, file_type, vendor_file_type;
 type hal_misys_vendor_service, protected_service, service_manager_type;
+type io_monitor_device, dev_type;
 
 init_daemon_domain(hal_misys_vendor_default)
 binder_use(hal_misys_vendor_default)
+hal_client_domain(hal_misys_vendor_default, hal_misyscore)
 
 allow hal_misys_vendor_default hal_misys_vendor_service:service_manager { add find };
 
@@ -12,3 +14,58 @@ allow hal_misys_vendor_default kmsg_device:chr_file read;
 
 # hal_misys_vendor_default is a client of hypsys_ssi (finds IHypSysSsiIntl/default)
 typeattribute hal_misys_vendor_default hypsys_ssi_client;
+
+# IoMonitor thread reads/writes /dev/io_monitor
+allow hal_misys_vendor_default io_monitor_device:chr_file { open read write };
+
+# HardWareInfo reads camera sensor prop, ChargerLogger reads boot status prop
+get_prop(hal_misys_vendor_default, vendor_camera_sensor_prop)
+get_prop(hal_misys_vendor_default, boot_status_prop)
+
+# ModuleManager reads default_prop
+get_prop(hal_misys_vendor_default, default_prop)
+
+# BSPLogProcessor: search block devices and vfat, read minidump dir, read sysfs bootinfo
+allow hal_misys_vendor_default block_device:dir search;
+allow hal_misys_vendor_default block_device:blk_file getattr;
+allow hal_misys_vendor_default vfat:dir search;
+allow hal_misys_vendor_default vfat:file { open read write };
+allow hal_misys_vendor_default minidump_data_file:dir { open read };
+allow hal_misys_vendor_default sysfs:file { open read };
+
+# BSPLogProcessor: set vendor.minidump.is.valid property
+set_prop(hal_misys_vendor_default, vendor_default_prop)
+
+# ChargerLogger: write kmsg, manage wake locks
+allow hal_misys_vendor_default kmsg_device:chr_file { getattr read write };
+allow hal_misys_vendor_default sysfs_wake_lock:file { open getattr write };
+
+# ChargerLogger: create/write bsp log dir and files
+allow hal_misys_vendor_default vendor_bsp_data_log_file:dir { open search write add_name };
+allow hal_misys_vendor_default vendor_bsp_data_log_file:file { create open read write getattr };
+
+# HardWareInfo: read/write hardware info sysfs node
+allow hal_misys_vendor_default vendor_sysfs_hardwareinfo:file { open read write getattr };
+
+# HardWareInfo: read SoC serial number sysfs
+allow hal_misys_vendor_default vendor_sysfs_soc_sensitive:file { open read getattr };
+
+# HardWareInfo: search display feature and battery sysfs dirs
+allow hal_misys_vendor_default vendor_sysfs_displayfeature:dir search;
+allow hal_misys_vendor_default vendor_sysfs_qcom_battery:dir search;
+
+# HardWareInfo: read /proc/mv (memory info), tp firmware/lockdown proc nodes
+allow hal_misys_vendor_default procfs_memory:file { open read getattr };
+allow hal_misys_vendor_default proc_tp_file:file { open read getattr };
+allow hal_misys_vendor_default proc_tp_lockdown:file { open read getattr };
+
+# HardWareInfo: read fingerprint and wifi version props
+get_prop(hal_misys_vendor_default, vendor_fp_prop)
+get_prop(hal_misys_vendor_default, vendor_wifi_version)
+
+# Set system properties (property socket connection)
+allow hal_misys_vendor_default property_socket:sock_file write;
+allow hal_misys_vendor_default init:unix_stream_socket connectto;
+
+# vendor_init: getattr on miev device (rc file chown/chmod)
+allow vendor_init miev_device:chr_file getattr;

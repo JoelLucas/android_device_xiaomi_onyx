@@ -18,7 +18,10 @@ allow hypsys_ssi_server system_prop:property_service set;
 
 # mqsas data dir access (BootMonitor, CaptureServer - /data/mqsas, /cache/mqsas)
 allow hypsys_ssi_server mqsas_data_file:dir { rw_dir_perms setattr };
-allow hypsys_ssi_server mqsas_data_file:file { create rw_file_perms };
+allow hypsys_ssi_server mqsas_data_file:file { create setattr rw_file_perms };
+
+# init mounts tmpfs on /mnt/rescue/mqsas/dumpstateTemporary (labeled mqsas_data_file)
+allow init mqsas_data_file:dir mounton;
 
 # misight log access (RescueSpace reads /data/miuilog/misight)
 allow hypsys_ssi_server data_log_misight_file:dir r_dir_perms;
