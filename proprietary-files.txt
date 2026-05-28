@@ -1629,7 +1629,6 @@ vendor/lib64/com.xiaomi.immunesystem.hook.chi.so
 vendor/lib64/com.xiaomi.immunesystem.hook.mivi.so
 vendor/lib64/com.xiaomi.immunesystem.hook.mtkhal.so
 vendor/lib64/com.xiaomi.messagecenter.so
-vendor/lib64/hw/camera.qcom.sm8750.so
 vendor/lib64/hw/com.qti.chi.offline.so
 vendor/lib64/immunesystem.db.sqlite3.so
 vendor/lib64/libAF.so
@@ -1658,12 +1657,10 @@ vendor/lib64/libcalculator.so;FIX_SONAME
 vendor/lib64/libcameraobserver.so
 vendor/lib64/libcameraopt.so
 vendor/lib64/libcamlog.so
-vendor/lib64/libcamxcommonutils.so
 vendor/lib64/libcamxcoreutils.so
 vendor/lib64/libcamxcsl.so
 vendor/lib64/libcamxexternalformatutils.so
 vendor/lib64/libcamxfdengine.so
-vendor/lib64/libcamxhwlfrontend.so
 vendor/lib64/libcamxhwlipedriver.so
 vendor/lib64/libcamxhwnodecontext.so
 vendor/lib64/libcamxifestriping.so
@@ -3623,6 +3620,9 @@ vendor/bin/nv_mac
 vendor/lib64/libxiaomi_qmi.so
 
 # Meh
+vendor/lib64/hw/camera.qcom.sm8750.so
+vendor/lib64/libcamxcommonutils.so
+vendor/lib64/libcamxhwlfrontend.so
 vendor/lib64/libmialgoengine.so
 vendor/lib64/libmicamera_adapter.so
 vendor/lib64/hw/camera.qcom.so
