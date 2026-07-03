@@ -331,6 +331,8 @@ PRODUCT_PACKAGES += \
     vendor_modem_firmware_mountpoint
 
 # Power
+TARGET_PROVIDES_POWERHAL := true
+
 PRODUCT_PACKAGES += \
     android.hardware.power-service.lineage-libperfmgr \
     libqti-perfd-client
