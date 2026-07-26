@@ -2246,6 +2246,38 @@ vendor/etc/display/pipe_config_DPU11__.xml
 vendor/etc/display/ubwc_alignments.json
 vendor/etc/display/video_alignments.json
 
+# Dolby
+odm/bin/hw/dvs-aidl-service
+odm/etc/dolby/dax-default-spatializer.xml
+odm/etc/dolby/dax-default.xml
+odm/etc/init/dvs-aidl-service.rc
+odm/etc/surfaceflinger/dolby_vision.cfg
+-odm/etc/vintf/manifest/dvs-aidl-service.xml
+odm/vendor/etc/dolby_vision.cfg
+odm/vendor/persist/display/dolby_vision.cfg
+vendor/bin/hw/vendor.dolby.dms.service
+vendor/bin/hw/vendor.dolby.media.c2-default-service-dax
+vendor/etc/dolby/dax-default-spatializer.xml
+vendor/etc/dolby/dax-default.xml
+vendor/etc/init/dms-service.rc
+vendor/etc/init/vendor.dolby.media.c2-default-service-dax.rc
+-vendor/etc/vintf/manifest/dms-service.xml
+-vendor/etc/vintf/manifest/vendor.dolby.media.c2-default-service-dax.xml
+vendor/lib64/libcodec2_store_dolby.so
+vendor/lib64/libdlbdsservice.so
+vendor/lib64/libdlbpreg.so
+vendor/lib64/libdmshal.so
+vendor/lib64/libdolbyclstc.so
+vendor/lib64/libdolbydecoderprocessor.so
+vendor/lib64/libdolbyeglcore.so
+vendor/lib64/libdolbyencoderprocessor.so
+vendor/lib64/libdolbyottcameracontrol.so
+vendor/lib64/libdolbyproxyandroid.so
+vendor/lib64/libqcodec2_dolbydecoderfilter.so
+vendor/lib64/libqcodec2_dolbyencoderfilter.so
+vendor/lib64/vendor.dolby.dms-V1-ndk.so
+vendor/lib64/vendor.dolby.hardware.dms@2.0.so
+
 # Display (HDR)
 vendor/lib64/libgame_enhance.so
 vendor/lib64/libhdr_backlight_adapter.so

@@ -442,6 +442,71 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.usb.accessory.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.usb.accessory.xml \
     frameworks/native/data/etc/android.hardware.usb.host.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.usb.host.xml
 
+# C2 HIDL compatibility libs (needed by vendor.dolby.media.c2-default-service-dax)
+PRODUCT_PACKAGES += \
+    android.hardware.media.c2@1.0.vendor \
+    android.hardware.media.c2@1.1.vendor \
+    android.hardware.media.c2@1.2.vendor \
+    libcodec2_hidl@1.0.vendor \
+    libcodec2_hidl@1.1.vendor \
+    libcodec2_hidl@1.2.vendor \
+    libcodec2_soft_common.vendor
+
+# Dolby — full native AIDL/DAX3 stack (libs deeply coupled via dependency chain):
+# codec → libdmshal.so → libdapparamstorage.so + vendor.dolby.dms/hardware IPC.
+# DMS SERVICE DAEMON (vendor.dolby.dms.service) IS now installed below — it is the
+# param backend for the DAP effect; without it the effect no-ops/mutes ("Dolby audio
+# loss"). The daemon is gated by persist.sys.lunaris.dolby.backend (default: aidl) so
+# it only runs when the native backend is active (see dolby/dms-service.rc).
+DOLBY_VENDOR := vendor/xiaomi/onyx/proprietary
+PRODUCT_COPY_FILES += \
+    $(DOLBY_VENDOR)/vendor/bin/hw/vendor.dolby.media.c2-default-service-dax:$(TARGET_COPY_OUT_VENDOR)/bin/hw/vendor.dolby.media.c2-default-service-dax \
+    $(DOLBY_VENDOR)/vendor/lib64/libcodec2_store_dolby.so:$(TARGET_COPY_OUT_VENDOR)/lib64/libcodec2_store_dolby.so \
+    $(DOLBY_VENDOR)/vendor/lib64/libdolbydecoderprocessor.so:$(TARGET_COPY_OUT_VENDOR)/lib64/libdolbydecoderprocessor.so \
+    $(DOLBY_VENDOR)/vendor/lib64/libdolbyeglcore.so:$(TARGET_COPY_OUT_VENDOR)/lib64/libdolbyeglcore.so \
+    $(DOLBY_VENDOR)/vendor/lib64/libdolbyottcameracontrol.so:$(TARGET_COPY_OUT_VENDOR)/lib64/libdolbyottcameracontrol.so \
+    $(DOLBY_VENDOR)/vendor/lib64/libqcodec2_dolbydecoderfilter.so:$(TARGET_COPY_OUT_VENDOR)/lib64/libqcodec2_dolbydecoderfilter.so \
+    $(DOLBY_VENDOR)/vendor/lib64/libdolbyclstc.so:$(TARGET_COPY_OUT_VENDOR)/lib64/libdolbyclstc.so \
+    $(DOLBY_VENDOR)/vendor/lib64/libdeccfg.so:$(TARGET_COPY_OUT_VENDOR)/lib64/libdeccfg.so \
+    $(DOLBY_VENDOR)/vendor/lib64/libcodec2_soft_ac4dec.so:$(TARGET_COPY_OUT_VENDOR)/lib64/libcodec2_soft_ac4dec.so \
+    $(DOLBY_VENDOR)/vendor/lib64/libcodec2_soft_ddpdec.so:$(TARGET_COPY_OUT_VENDOR)/lib64/libcodec2_soft_ddpdec.so \
+    $(DOLBY_VENDOR)/vendor/lib64/libdmshal.so:$(TARGET_COPY_OUT_VENDOR)/lib64/libdmshal.so \
+    $(DOLBY_VENDOR)/vendor/lib64/libdapparamstorage.so:$(TARGET_COPY_OUT_VENDOR)/lib64/libdapparamstorage.so \
+    $(DOLBY_VENDOR)/vendor/lib64/libdlbdsservice.so:$(TARGET_COPY_OUT_VENDOR)/lib64/libdlbdsservice.so \
+    $(DOLBY_VENDOR)/vendor/lib64/libdlbpreg.so:$(TARGET_COPY_OUT_VENDOR)/lib64/libdlbpreg.so \
+    $(DOLBY_VENDOR)/vendor/lib64/vendor.dolby.dms-V1-ndk.so:$(TARGET_COPY_OUT_VENDOR)/lib64/vendor.dolby.dms-V1-ndk.so \
+    $(DOLBY_VENDOR)/vendor/lib64/vendor.dolby.hardware.dms@2.0.so:$(TARGET_COPY_OUT_VENDOR)/lib64/vendor.dolby.hardware.dms@2.0.so \
+    $(DOLBY_VENDOR)/vendor/lib64/soundfx/libmiwndnsprocessingaidl.so:$(TARGET_COPY_OUT_VENDOR)/lib64/soundfx/libmiwndnsprocessingaidl.so \
+    $(DOLBY_VENDOR)/vendor/lib64/soundfx/libhwdapaidl.so:$(TARGET_COPY_OUT_VENDOR)/lib64/soundfx/libhwdapaidl.so \
+    $(DOLBY_VENDOR)/vendor/lib64/soundfx/libdlbvolaidl.so:$(TARGET_COPY_OUT_VENDOR)/lib64/soundfx/libdlbvolaidl.so \
+    $(DOLBY_VENDOR)/vendor/lib64/soundfx/libswspatializeraidl.so:$(TARGET_COPY_OUT_VENDOR)/lib64/soundfx/libswspatializeraidl.so \
+    $(DOLBY_VENDOR)/vendor/lib64/soundfx/libswgamedapaidl.so:$(TARGET_COPY_OUT_VENDOR)/lib64/soundfx/libswgamedapaidl.so \
+    $(DOLBY_VENDOR)/vendor/etc/init/vendor.dolby.media.c2-default-service-dax.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/vendor.dolby.media.c2-default-service-dax.rc \
+    $(DOLBY_VENDOR)/vendor/etc/media_codecs_dolby_audio.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_dolby_audio.xml \
+    $(DOLBY_VENDOR)/vendor/etc/dolby/dax-default.xml:$(TARGET_COPY_OUT_VENDOR)/etc/dolby/dax-default.xml \
+    $(DOLBY_VENDOR)/vendor/etc/dolby/dax-default-spatializer.xml:$(TARGET_COPY_OUT_VENDOR)/etc/dolby/dax-default-spatializer.xml \
+    $(DOLBY_VENDOR)/odm/etc/dolby/dax-default.xml:$(TARGET_COPY_OUT_ODM)/etc/dolby/dax-default.xml \
+    $(DOLBY_VENDOR)/odm/etc/dolby/dax-default-spatializer.xml:$(TARGET_COPY_OUT_ODM)/etc/dolby/dax-default-spatializer.xml \
+    $(DOLBY_VENDOR)/odm/etc/surfaceflinger/dolby_vision.cfg:$(TARGET_COPY_OUT_ODM)/etc/surfaceflinger/dolby_vision.cfg \
+    $(DOLBY_VENDOR)/odm/vendor/etc/dolby_vision.cfg:$(TARGET_COPY_OUT_ODM)/vendor/etc/dolby_vision.cfg \
+    $(DOLBY_VENDOR)/odm/bin/hw/dvs-aidl-service:$(TARGET_COPY_OUT_ODM)/bin/hw/dvs-aidl-service \
+    $(DOLBY_VENDOR)/odm/etc/init/dvs-aidl-service.rc:$(TARGET_COPY_OUT_ODM)/etc/init/dvs-aidl-service.rc \
+    $(DOLBY_VENDOR)/odm/vendor/persist/display/dolby_vision.cfg:$(TARGET_COPY_OUT_ODM)/vendor/persist/display/dolby_vision.cfg
+
+# Dolby DMS service daemon (DAP param backend) — binary from blobs, but a
+# switch-gated init.rc from the device tree (NOT the blob dms-service.rc, which
+# would auto-start unconditionally and duplicate the service definition).
+# The VINTF manifest (dms-service.xml) is already merged via DEVICE_MANIFEST_FILE
+# in BoardConfig.mk — do NOT also copy it here as a fragment (double-declaration).
+PRODUCT_COPY_FILES += \
+    $(DOLBY_VENDOR)/vendor/bin/hw/vendor.dolby.dms.service:$(TARGET_COPY_OUT_VENDOR)/bin/hw/vendor.dolby.dms.service \
+    $(LOCAL_PATH)/dolby/dms-service.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/dms-service.rc
+
+# Dolby Vision - VINTF manifest
+ODM_MANIFEST_FILES += \
+    $(DOLBY_VENDOR)/odm/etc/vintf/manifest/dvs-aidl-service.xml
+
+
 # Vendor service manager
 PRODUCT_PACKAGES += \
     vndservicemanager

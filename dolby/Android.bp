@@ -1,0 +1,18 @@
+// Dolby effect-config runtime switch symlinks.
+// Only added to the build when DOLBY_RUNTIME_SWITCH=true (see device.mk). They point
+// the RO effects-config search path at the writable persist copy that
+// dolby-effects-switch.rc populates per persist.sys.lunaris.dolby.backend.
+
+install_symlink {
+    name: "dolby_effects_config_symlink",
+    vendor: true,
+    installed_location: "etc/audio/sku_tuna/audio_effects_config.xml",
+    symlink_target: "/mnt/vendor/persist/dolby/audio_effects_config.xml",
+}
+
+install_symlink {
+    name: "dolby_effects_alt_symlink",
+    vendor: true,
+    installed_location: "etc/audio/sku_tuna/audio_effects.xml",
+    symlink_target: "/mnt/vendor/persist/dolby/audio_effects_config.xml",
+}

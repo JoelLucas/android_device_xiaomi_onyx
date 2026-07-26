@@ -274,8 +274,6 @@ blob_fixups: blob_fixups_user_type = {
         .add_needed('libinput_shim.so')
         .remove_needed('android.hidl.base@1.0.so'),
 
-    'vendor/etc/clstc_config_library.xml': blob_fixup()
-        .regex_replace(r'<library>\s*<name>libdolbyclstc[\s\S]*?</library>', ''),
 
     'vendor/etc/sensors/hals.conf': blob_fixup()
         .regex_replace('.*vl53l8.*\n?', ''),

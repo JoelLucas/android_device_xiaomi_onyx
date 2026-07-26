@@ -1,0 +1,23 @@
+# Dolby DMS HAL daemon (vendor.dolby.dms / IDms) — DAP parameter backend.
+#
+# Unlike the stock blob dms-service.rc, this definition is `disabled` and is
+# started only when the native AIDL Dolby backend is selected, so the ported
+# HIDL stack can own the DAP effect when backend=hidl without two daemons
+# fighting over the same ADSP DAP graph.
+#
+# Backend selector: persist.sys.lunaris.dolby.backend = aidl (default) | hidl
+service dms-hal /vendor/bin/hw/vendor.dolby.dms.service
+    class hal
+    user media
+    group audio media
+    disabled
+
+on post-fs-data
+    mkdir /data/vendor/dolby 0770 media media
+
+# Start on the native backend, stop on the ported backend.
+on property:persist.sys.lunaris.dolby.backend=aidl
+    start dms-hal
+
+on property:persist.sys.lunaris.dolby.backend=hidl
+    stop dms-hal

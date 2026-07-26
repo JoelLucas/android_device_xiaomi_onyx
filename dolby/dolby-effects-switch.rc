@@ -1,0 +1,26 @@
+# Dolby effect-config backend switch (reboot-applied, only used when
+# DOLBY_RUNTIME_SWITCH=true — otherwise the native config is copied directly to the
+# RO search path and this file is not installed).
+#
+# Mechanism: /vendor/etc/audio/sku_tuna/audio_effects_config.xml is a symlink into
+# /mnt/vendor/persist/dolby (writable). We seed the AIDL config as a guaranteed
+# baseline in post-fs-data (before audioserver reads it), then swap to the selected
+# backend when the persist prop resolves and reload audioserver.
+#
+# persist.sys.lunaris.dolby.backend = aidl (default) | hidl
+
+on post-fs-data
+    mkdir /mnt/vendor/persist/dolby 0771 audioserver audioserver
+    copy /vendor/etc/audio/dolby/audio_effects_config_aidl.xml /mnt/vendor/persist/dolby/audio_effects_config.xml
+    chmod 0644 /mnt/vendor/persist/dolby/audio_effects_config.xml
+    chown audioserver audioserver /mnt/vendor/persist/dolby/audio_effects_config.xml
+
+on property:persist.sys.lunaris.dolby.backend=aidl
+    copy /vendor/etc/audio/dolby/audio_effects_config_aidl.xml /mnt/vendor/persist/dolby/audio_effects_config.xml
+    chmod 0644 /mnt/vendor/persist/dolby/audio_effects_config.xml
+    restart audioserver
+
+on property:persist.sys.lunaris.dolby.backend=hidl
+    copy /vendor/etc/audio/dolby/audio_effects_config_hidl.xml /mnt/vendor/persist/dolby/audio_effects_config.xml
+    chmod 0644 /mnt/vendor/persist/dolby/audio_effects_config.xml
+    restart audioserver
