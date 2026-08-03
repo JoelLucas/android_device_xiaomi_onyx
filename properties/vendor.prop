@@ -222,3 +222,18 @@ vendor.usb.use_gadget_hal=1
 
 # WiFi
 wifi.aware.interface=wifi-aware0
+
+# Dalvik
+dalvik.vm.dex2oat64.enabled=true
+dalvik.vm.mtk-stack-trace-file=/data/anr/mtk_traces.txt
+
+# Dex2oat
+dalvik.vm.dex2oat-cpu-set=4,5,6,7
+dalvik.vm.dex2oat-threads=4
+dalvik.vm.image-dex2oat-cpu-set=4,5,6,7
+dalvik.vm.image-dex2oat-threads=4
+
+# HWUI
+debug.hwui.use_hint_manager=true
+ro.hwui.render_ahead=2
+debug.hwui.target_cpu_time_percent=30
