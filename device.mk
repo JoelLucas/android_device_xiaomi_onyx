@@ -490,6 +490,9 @@ PRODUCT_COPY_FILES += \
 # Vendor
 $(call inherit-product, vendor/xiaomi/onyx/onyx-vendor.mk)
 
+# Vendor MiuiCamera
+$(call inherit-product-if-exists, device/xiaomi/onyx-miuicamera/device.mk)
+
 # Enable DM file pre-opting to reduce first boot time
 PRODUCT_DEX_PREOPT_GENERATE_DM_FILES := true
 
