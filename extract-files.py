@@ -424,16 +424,6 @@ blob_fixups: blob_fixups_user_type = {
             'android.media.audio.common.types-V3-ndk.so'
     ),
 
-    'vendor/lib64/soundfx/libbundleaidl.so': blob_fixup()
-        .replace_needed(
-            'android.media.audio.common.types-V6-ndk.so',
-            'android.media.audio.common.types-V3-ndk.so'
-        )
-        .replace_needed(
-            'libaudio_aidl_conversion_common_ndk.so',
-            'libaudio_aidl_conversion_common_ndk_prebuilt.so'
-    ),
-
     'vendor/lib64/vendor.libdpmframework.so': blob_fixup()
         .add_needed('libhidlbase_shim.so'),
 }  # fmt: skip
