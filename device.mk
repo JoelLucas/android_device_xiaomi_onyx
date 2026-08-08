@@ -142,7 +142,7 @@ PRODUCT_PACKAGES += \
     android.hardware.graphics.composer3-V3-ndk.vendor \
     vendor.qti.hardware.display.aiqe-V2-ndk.vendor  \
     vendor.qti.hardware.display.config-V12-ndk.vendor  \
-    vendor.qti.hardware.display.composer3-V1-ndk.vendor 
+    vendor.qti.hardware.display.composer3-V1-ndk.vendor
 
 # DRM
 PRODUCT_PACKAGES += \
@@ -489,3 +489,54 @@ PRODUCT_COPY_FILES += \
 
 # Vendor
 $(call inherit-product, vendor/xiaomi/onyx/onyx-vendor.mk)
+
+# lineage-priv
+-include vendor/lineage-priv/keys/keys.mk)
+
+# Vendor MiuiCamera
+$(call inherit-product-if-exists, device/xiaomi/onyx-miuicamera/device.mk)
+
+# Enable DM file pre-opting to reduce first boot time
+PRODUCT_DEX_PREOPT_GENERATE_DM_FILES := true
+
+# Reduce system server verbosity.
+PRODUCT_SYSTEM_SERVER_DEBUG_INFO := false
+PRODUCT_OTHER_JAVA_DEBUG_INFO := false
+
+PRODUCT_SYSTEM_SERVER_COMPILER_FILTER := speed-profile
+
+PRODUCT_DEX_PREOPT_DEFAULT_COMPILER_FILTER := verify
+
+# Always preopt extracted APKs to prevent extracting out of the APK for gms
+# modules.
+PRODUCT_ALWAYS_PREOPT_EXTRACTED_APK := true
+
+# Use a profile based boot image for this device. Note that this is currently a
+# generic profile and not Android Go optimized.
+PRODUCT_USE_PROFILE_FOR_BOOT_IMAGE := true
+PRODUCT_DEX_PREOPT_BOOT_IMAGE_PROFILE_LOCATION := frameworks/base/boot/boot-image-profile.txt
+
+# Do not generate libartd.
+PRODUCT_ART_TARGET_INCLUDE_DEBUG_BUILD := false
+
+# Strip the local variable table and the local variable type table to reduce
+# the size of the system image. This has no bearing on stack traces, but will
+# leave less information available via JDWP.
+PRODUCT_MINIMIZE_JAVA_DEBUG_INFO := true
+
+# Dex - Debug
+ART_BUILD_TARGET_NDEBUG := true
+ART_BUILD_TARGET_DEBUG := false
+ART_BUILD_HOST_NDEBUG := true
+ART_BUILD_HOST_DEBUG := false
+PRODUCT_MINIMIZE_JAVA_DEBUG_INFO := true
+PRODUCT_ART_TARGET_INCLUDE_DEBUG_BUILD := false
+USE_DEX2OAT_DEBUG := false
+
+# Preopt critical applications
+PRODUCT_DEXPREOPT_SPEED_APPS += \
+    Settings \
+    SystemUI
+
+# SurfaceFlinger
+TARGET_USE_ AOSP SURFACEFLINGER := true
