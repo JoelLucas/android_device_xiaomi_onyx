@@ -92,6 +92,7 @@ TARGET_KERNEL_ADDITIONAL_FLAGS := TARGET_PRODUCT=$(PRODUCT_DEVICE)
 TARGET_KERNEL_SOURCE := kernel/xiaomi/sm8735
 TARGET_KERNEL_CONFIG := \
     gki_defconfig \
+    vendor/custom.config \
     vendor/sun_perf.config \
     vendor/onyx_perf.config \
 
@@ -282,3 +283,6 @@ WPA_SUPPLICANT_VERSION := VER_0_8_X
 
 # Vendor
 include vendor/xiaomi/onyx/BoardConfigVendor.mk
+
+# Vendor MiuiCamera
+$(call inherit-product-if-exists, device/xiaomi/onyx-miuicamera/device.mk)
