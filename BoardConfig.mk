@@ -284,5 +284,5 @@ WPA_SUPPLICANT_VERSION := VER_0_8_X
 # Vendor
 include vendor/xiaomi/onyx/BoardConfigVendor.mk
 
-# Vendor MiuiCamera
-$(call inherit-product-if-exists, device/xiaomi/onyx-miuicamera/device.mk)
+# MiuiCamera
+-include device/xiaomi/onyx-miuicamera/BoardConfig.mk
