@@ -19,9 +19,9 @@ Rear Camera 1 | 50.3 MP, f/1.5, (wide), PDAF, OIS, 8K Video
 Rear Camera 2 | 8 MP, (ultrawide)
 Front Camera | 20.2 MP, f/2.2, (wide)
 
-## Device picture
+## Device Picture
 
-![POCO F7 / Redmi Turbo 4 Pro](https://www.notebookcheck.net/fileadmin/Notebooks/News/_nc4/poco-f7-special-edition-info-bottom.jpg)
+![Picsart](https://fdn2.gsmarena.com/vv/pics/xiaomi/xiaomi-poco-f7-2.jpg)
 
 ## Copyright
 
