@@ -7,9 +7,6 @@ genfscon proc /sys/kernel/sched_migration_cost_ns u:object_r:proc_sched:s0
 genfscon sysfs /class/kgsl/kgsl-3d0/devfreq/available_frequencies u:object_r:sysfs_gpu:s0
 genfscon sysfs /class/kgsl/kgsl-3d0/devfreq/min_freq u:object_r:sysfs_gpu:s0
 
-# Battery
-genfscon sysfs /class/qcom-battery u:object_r:vendor_sysfs_qcom_battery:s0
-
 # Camera
 genfscon sysfs /csiphy_umd_paras/csiphy_umd_paras u:object_r:sysfs_csiphy_umd_paras:s0
 
