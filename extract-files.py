@@ -408,6 +408,9 @@ blob_fixups: blob_fixups_user_type = {
     'vendor/lib64/libqcrilNrVoiceModule.so': blob_fixup()
         .sig_replace('a1 00 80 52 22', 'a1 00 80 52 02'),
 
+    'vendor/lib64/libqti-perfd.so': blob_fixup()
+        .replace_needed('vendor.qti.hardware.display.config-V5-ndk.so', 'vendor.qti.hardware.display.config-V12-ndk.so'),
+
     'vendor/lib64/libultrahdr_prebuilt.so': blob_fixup()
         .replace_needed(
             'libjpegdecoder.so',

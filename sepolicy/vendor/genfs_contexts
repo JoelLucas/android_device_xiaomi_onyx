@@ -114,8 +114,6 @@ genfscon sysfs /devices/platform/soc/soc:mca_business_charger/wakeup u:object_r:
 genfscon sysfs /devices/platform/soc/soc:mi_t1_chip/wakeup u:object_r:sysfs_wakeup:s0
 genfscon sysfs /devices/platform/soc/soc:qcom,dsi-display-primary/wakeup u:object_r:sysfs_wakeup:s0
 
-# Walt
-genfscon proc /sys/walt u:object_r:proc_walt:s0
 
 # More-specific labels override parent MCA sysfs label.
 genfscon sysfs /devices/platform/soc/soc:mca_charge_interface/charge_enable u:object_r:vendor_sysfs_charge_limit:s0

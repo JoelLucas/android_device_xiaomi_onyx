@@ -177,7 +177,11 @@ ro.config.vc_call_vol_steps=11
 
 # Perf
 ro.vendor.extension_library=libqti-perfd-client.so
+ro.vendor.perf-hal.ver=3.0
+ro.vendor.perf.scroll_opt=1
+ro.vendor.qspm.enable=true
 vendor.perf.framepacing.enable=1
+vendor.perf.framepacing.window_apis=0x04
 
 # QCOM
 ro.soc.manufacturer=QTI

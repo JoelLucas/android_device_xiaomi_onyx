@@ -383,14 +383,10 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/perf/qapeconfigstore.xml:$(TARGET_COPY_OUT_VENDOR)/etc/perf/qapeconfigstore.xml
 
 # Power
-TARGET_PROVIDES_POWERHAL := true
-
-PRODUCT_PACKAGES += \
-    android.hardware.power-service.lineage-libperfmgr \
-    libqti-perfd-client
+$(call inherit-product, vendor/qcom/opensource/power/power-vendor-product.mk)
 
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/power/powerhint.json:$(TARGET_COPY_OUT_VENDOR)/etc/powerhint.json
+    vendor/qcom/opensource/power/config/sun/powerhint.xml:$(TARGET_COPY_OUT_VENDOR)/etc/powerhint.xml
 
 # Properties
 PRODUCT_COPY_FILES += \
@@ -433,9 +429,6 @@ PRODUCT_COPY_FILES += \
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += \
     $(LOCAL_PATH) \
-    hardware/google/interfaces \
-    hardware/google/pixel/power-libperfmgr \
-    hardware/lineage/interfaces/power-libperfmgr \
     hardware/xiaomi
 
 # Telephony
