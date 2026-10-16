@@ -202,6 +202,8 @@ on post-fs-data
 on property:dev.bootcomplete=1
     chown system system /sys/class/xm_power/charger/smart_charge/smart_night
     chmod 0660 /sys/class/xm_power/charger/smart_charge/smart_night
+    chown system system /sys/class/xm_power/charger/smart_charge/smart_chg
+    chmod 0660 /sys/class/xm_power/charger/smart_charge/smart_chg
 
 # Enable WLAN SSR recovery
 on property:persist.vendor.ssr.restart_level=ALL_ENABLE

@@ -11,4 +11,11 @@
         <item>restart_fastboot</item>
         <item>restart_bootloader</item>
     </string-array>
+
+    <!-- The charging node (MCA smart_chg) reads back a feature mask instead of the written
+         value, so always write instead of comparing first -->
+    <bool name="config_chargingControlToggleSetAlways">true</bool>
+
+    <!-- Recharge once the battery is 3% below the limit (bypass holds the level closely) -->
+    <integer name="config_chargingControlBatteryRechargeMargin">3</integer>
 </resources>
