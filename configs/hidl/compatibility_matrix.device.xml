@@ -7,6 +7,7 @@
             <instance>default</instance>
         </interface>
     </hal>
+    <hal format="aidl" optional="true">
         <name>vendor.xiaomi.hardware.aidl.intentaware</name>
         <interface>
             <name>IIntentAwareService</name>

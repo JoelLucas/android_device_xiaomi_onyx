@@ -275,11 +275,16 @@ PRODUCT_PACKAGES += \
 
 # Lineage Health
 PRODUCT_PACKAGES += \
+    BypassCharging \
     vendor.lineage.health-service.default
 
-$(call soong_config_set,lineage_health,charging_control_charging_path,/sys/class/xm_power/charger/smart_charge/smart_night)
-$(call soong_config_set,lineage_health,charging_control_charging_enabled,0)
-$(call soong_config_set,lineage_health,charging_control_charging_disabled,1)
+# MCA smart_chg endurance_pro: 65553 = enable | endurance_pro (BIT4) | soc_limit 1 (BIT16), which stops
+# battery charging at any level while the charger keeps powering the device; 16 = endurance_pro off.
+# smart_night stops only at a fixed 80%. smart_chg reads back a feature mask, not the written value,
+# so LineageSDKOverlayOnyx sets config_chargingControlToggleSetAlways.
+$(call soong_config_set,lineage_health,charging_control_charging_path,/sys/class/xm_power/charger/smart_charge/smart_chg)
+$(call soong_config_set,lineage_health,charging_control_charging_enabled,16)
+$(call soong_config_set,lineage_health,charging_control_charging_disabled,65553)
 $(call soong_config_set_bool,lineage_health,charging_control_supports_bypass,false)
 
 # Media

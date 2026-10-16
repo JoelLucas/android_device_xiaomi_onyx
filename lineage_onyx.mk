@@ -27,8 +27,6 @@ PRODUCT_NO_CAMERA := true
 BUILD_BCR := false
 TARGET_DISABLE_EPPE := true
 TARGET_INCLUDE_ACCORD := false
-BYPASS_CHARGE_SUPPORTED := true
-BYPASS_CHARGE_TOGGLE_PATH := /sys/class/xm_power/charger/smart_charge/smart_night
 
 # Device identifier. This must come after all inclusions
 PRODUCT_NAME := lineage_onyx
