@@ -1,5 +1,12 @@
 <compatibility-matrix version="8.0" type="framework">
     <hal format="aidl" optional="true">
+    <hal format="aidl" optional="true">
+        <name>vendor.dolby.dms</name>
+        <interface>
+            <name>IDms</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
         <name>vendor.xiaomi.hardware.aidl.intentaware</name>
         <interface>
             <name>IIntentAwareService</name>
