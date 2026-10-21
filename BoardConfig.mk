@@ -286,3 +286,14 @@ include vendor/xiaomi/onyx/BoardConfigVendor.mk
 
 # MiuiCamera
 -include device/xiaomi/onyx-miuicamera/BoardConfig.mk
+
+# Userdata
+PRODUCT_FS_COMPRESSION := 1
+
+# Erofs compress hints
+BOARD_EROFS_COMPRESS_HINTS := $(DEVICE_PATH)/configs/erofs_compress_hints.txt
+BOARD_SYSTEMIMAGE_EROFS_COMPRESS_HINTS := $(DEVICE_PATH)/configs/erofs_compress_hints.txt
+BOARD_SYSTEM_EXTIMAGE_EROFS_COMPRESS_HINTS := $(DEVICE_PATH)/configs/erofs_compress_hints.txt
+BOARD_VENDORIMAGE_EROFS_COMPRESS_HINTS := $(DEVICE_PATH)/configs/erofs_compress_hints.txt
+BOARD_PRODUCTIMAGE_EROFS_COMPRESS_HINTS := $(DEVICE_PATH)/configs/erofs_compress_hints.txt
+BOARD_ODMIMAGE_EROFS_COMPRESS_HINTS := $(DEVICE_PATH)/configs/erofs_compress_hints.txt
