@@ -370,6 +370,41 @@
             ],
             "DefaultIndex": 0,
             "ResetOnInit": true
+        },
+        {
+            "Name": "LLCCBWMinFreq",
+            "Path": "/sys/devices/system/cpu/bus_dcvs/LLCC/boost_freq",
+            "Values": [
+                "350000",
+                "533000",
+                "600000",
+                "806000",
+                "933000",
+                "1066000",
+                "1211200"
+            ],
+            "DefaultIndex": 0,
+            "ResetOnInit": true
+        },
+        {
+            "Name": "L3MinFreq",
+            "Path": "/sys/devices/system/cpu/bus_dcvs/L3/boost_freq",
+            "Values": [
+                "364800",
+                "518400",
+                "614400",
+                "806400",
+                "902400",
+                "998400",
+                "1094400",
+                "1209600",
+                "1344000",
+                "1497600",
+                "1593600",
+                "1804800"
+            ],
+            "DefaultIndex": 0,
+            "ResetOnInit": true
         }
     ],
     "Actions": [
@@ -846,6 +881,18 @@
             "Node": "sysKernelMsmPerformanceParametersCpuMinFreq",
             "Value": "0:1632000 1:1632000 2:1286400 3:1286400 4:1286400 5:2208000 6:2208000 7:1670400",
             "Duration": 1000
+        },
+        {
+            "PowerHint": "EXPENSIVE_RENDERING",
+            "Node": "LLCCBWMinFreq",
+            "Duration": 0,
+            "Value": "600000"
+        },
+        {
+            "PowerHint": "EXPENSIVE_RENDERING",
+            "Node": "L3MinFreq",
+            "Duration": 0,
+            "Value": "806400"
         }
     ]
 }
