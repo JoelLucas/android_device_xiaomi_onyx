@@ -106,8 +106,6 @@ BOARD_KERNEL_CMDLINE := \
     mtdoops.fingerprint=$(LINEAGE_VERSION) \
     bootmonitor.fingerprint=$(LINEAGE_VERSION)
 
-BOARD_KERNEL_CMDLINE += androidboot.init_fatal_reboot_target=recovery
-
 BOARD_BOOTCONFIG := \
     androidboot.hardware=qcom \
     androidboot.memcg=1 \
