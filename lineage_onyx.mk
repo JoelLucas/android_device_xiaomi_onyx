@@ -18,17 +18,17 @@ TARGET_SCREEN_HEIGHT := 2400
 TARGET_SCREEN_WIDTH := 1080
 
 # Build flags
+TARGET_CUSTOM_UDFPS := true
 WITH_GMS := true
-TARGET_USES_MINI_GAPPS := true
-TARGET_SUPPORT_BOOT_ANIMATIONS := true
-TARGET_ENABLE_BLUR := true
-TARGET_HAS_UDFPS := true
+WITH_GMS_COMMS_SUITE := true
+WITH_PIXEL_LAUNCHER := true
+TARGET_USE_MAPS := true
+TARGET_USE_FILES := false
+TARGET_USE_GPHOTOS := false
+USE_REALITY_ENGINE := true
+SURFACE_FLINGER_BOOST := true
 PRODUCT_NO_CAMERA := true
-BUILD_BCR := false
-TARGET_DISABLE_EPPE := true
-TARGET_INCLUDE_ACCORD := false
 BYPASS_CHARGE_SUPPORTED := true
-BYPASS_CHARGE_TOGGLE_PATH := /sys/class/xm_power/charger/smart_charge/smart_night
 
 # Device identifier. This must come after all inclusions
 PRODUCT_NAME := lineage_onyx
