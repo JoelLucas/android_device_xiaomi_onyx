@@ -19,6 +19,7 @@ qcom_cpuss_sleep_stats.ko
 qcom_cpuss_sleep_stats_v4.ko
 pcie-pdc.ko
 pdr_interface.ko
+qcom_pdr_msg.ko
 qmi_helpers.ko
 heap_mem_ext_v01.ko
 msm_memshare.ko
@@ -50,7 +51,6 @@ slc_mpam.ko
 cpucp_log.ko
 sys_pm_vx.ko
 mem-hooks.ko
-mem-offline.ko
 sps_drv.ko
 qcom_ramdump.ko
 sysmon_subsystem_stats.ko
