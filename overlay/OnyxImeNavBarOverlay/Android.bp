@@ -1,0 +1,4 @@
+runtime_resource_overlay {
+    name: "OnyxImeNavBarOverlay",
+    system_ext_specific: true,
+}

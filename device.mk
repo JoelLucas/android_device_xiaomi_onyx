@@ -346,6 +346,7 @@ PRODUCT_PACKAGES += \
     SystemUIOverlayOnyx \
     TelephonyOverlayOnyx \
     FrameworkOverlayOnyx \
+    OnyxImeNavBarOverlay \
     FrameworkOverlayOnyxCN \
     FrameworkOverlayOnyxGL \
     LineageSDKOverlayOnyx \
