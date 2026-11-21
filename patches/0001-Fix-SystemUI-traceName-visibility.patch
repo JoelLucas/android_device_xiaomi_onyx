@@ -1,0 +1,13 @@
+diff --git a/packages/SystemUI/src/com/android/systemui/qs/panels/ui/compose/infinitegrid/Tile.kt b/packages/SystemUI/src/com/android/systemui/qs/panels/ui/compose/infinitegrid/Tile.kt
+index be9b882aa..85be5ed6d 100644
+--- a/packages/SystemUI/src/com/android/systemui/qs/panels/ui/compose/infinitegrid/Tile.kt
++++ b/packages/SystemUI/src/com/android/systemui/qs/panels/ui/compose/infinitegrid/Tile.kt
+@@ -149,7 +149,7 @@ import kotlinx.coroutines.flow.callbackFlow
+ import platform.test.motion.compose.values.MotionTestValueKey
+ import platform.test.motion.compose.values.motionTestValues
+ 
+-private val TileViewModel.traceName
++internal val TileViewModel.traceName
+     get() = spec.toString().takeLast(Trace.MAX_SECTION_NAME_LEN)
+ 
+ /** Nothing-style Quick Settings (monochrome pills, circles and 2x2 quad tiles on a 4 column grid). */
