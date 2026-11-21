@@ -205,6 +205,12 @@ on property:dev.bootcomplete=1
     chown system system /sys/class/xm_power/charger/smart_charge/smart_chg
     chmod 0660 /sys/class/xm_power/charger/smart_charge/smart_chg
 
+    # Privileged charging bridge: only UID system can read/write these nodes.
+    chown system system /sys/devices/platform/soc/soc:mca_charge_interface/charge_enable
+    chmod 0660 /sys/devices/platform/soc/soc:mca_charge_interface/charge_enable
+    chown system system /sys/devices/platform/soc/soc:mca_charge_interface/ichg_limit
+    chmod 0660 /sys/devices/platform/soc/soc:mca_charge_interface/ichg_limit
+
 # Enable WLAN SSR recovery
 on property:persist.vendor.ssr.restart_level=ALL_ENABLE
     write /sys/kernel/cnss/recovery 3

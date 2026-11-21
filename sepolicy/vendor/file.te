@@ -57,3 +57,6 @@ type proc_walt, fs_type, proc_type;
 
 # Wlan
 type vendor_mac_vendor_data_file, data_file_type, file_type, mlstrustedobject;
+
+# Dedicated type for the two MCA nodes exposed by BypassChargeBridge.
+type vendor_sysfs_charge_limit, fs_type, sysfs_type;

@@ -288,6 +288,7 @@ PRODUCT_PACKAGES += \
 # Lineage Health
 PRODUCT_PACKAGES += \
     BypassCharging \
+    BypassChargeBridge \
     vendor.lineage.health-service.default
 
 # MCA smart_chg endurance_pro: 65553 = enable | endurance_pro (BIT4) | soc_limit 1 (BIT16), which stops

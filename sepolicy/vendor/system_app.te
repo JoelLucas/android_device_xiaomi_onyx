@@ -1,0 +1,3 @@
+# BypassChargeBridge runs as system_app.
+allow system_app vendor_sysfs_xm_power:dir { getattr search };
+allow system_app vendor_sysfs_charge_limit:file rw_file_perms;
