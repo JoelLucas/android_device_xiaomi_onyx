@@ -6,4 +6,10 @@
 <resources>
     <!-- App Name -->
     <string name="app_name">Xiaomi Parts</string>
+
+    <!-- Touch sampling rate Quick Settings tile -->
+    <string name="touch_sampling_rate_tile_label">Touch rate</string>
+    <string name="touch_sampling_rate_normal">Normal</string>
+    <string name="touch_sampling_rate_240">240 Hz</string>
+    <string name="touch_sampling_rate_480">480 Hz</string>
 </resources>
