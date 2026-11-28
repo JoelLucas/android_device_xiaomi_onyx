@@ -2790,6 +2790,28 @@ vendor/bin/pm-proxy
 vendor/bin/pm-service
 vendor/lib64/libperipheral_client.so
 
+# Performance
+vendor/bin/hw/vendor.qti.hardware.perf2-hal-service
+vendor/etc/init/vendor.qti.hardware.perf2-hal-service.rc
+vendor/etc/perf/commonresourceconfigs.xml
+vendor/etc/perf/commonsysnodesconfigs.xml
+vendor/etc/perf/perfboostsconfig.xml
+vendor/etc/perf/targetconfig.xml
+vendor/etc/perf/targetresourceconfigs.xml
+vendor/etc/perf/targetsysnodesconfigs.xml
+vendor/etc/vintf/manifest/vendor.qti.hardware.perf2.xml
+vendor/lib64/libperfconfig.so
+vendor/lib64/libperfioctl.so
+vendor/lib64/libq-perflog.so
+vendor/lib64/libqti-perfd-client.so
+vendor/lib64/libqti-perfd.so
+vendor/lib64/libqti-s3tf.so
+vendor/lib64/libqti-scenariod.so
+vendor/lib64/libqti-sslite.so
+vendor/lib64/libqti-util.so
+vendor/lib64/vendor.qti.hardware.perf2-V1-ndk.so
+vendor/lib64/vendor.qti.memory.pasrmanager-V1-ndk.so
+
 # Power-off alarm
 system_ext/app/PowerOffAlarm/PowerOffAlarm.apk
 system_ext/framework/vendor.qti.hardware.alarm-V1.0-java.jar
