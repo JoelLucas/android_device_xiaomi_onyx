@@ -3380,7 +3380,6 @@ vendor/lib64/vendor.qti.hardware.soter-V1-ndk.so
 # Thermal engine
 vendor/bin/thermal-engine-v2
 vendor/etc/init/init_thermal-engine-v2.rc
-vendor/etc/thermal-engine.conf
 vendor/lib64/liblmthermallistner.so
 vendor/lib64/libthermalclient.so
 
