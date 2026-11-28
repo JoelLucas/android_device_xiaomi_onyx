@@ -269,3 +269,4 @@ q6_pdr_dlkm.ko
 adsp_loader_dlkm.ko
 xiaomi_touch.ko
 nt36532_touch.ko
+dcvs_boost.ko

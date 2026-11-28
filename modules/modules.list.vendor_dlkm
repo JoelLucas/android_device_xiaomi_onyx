@@ -79,3 +79,4 @@ spss_utils.ko
 ipclite_test.ko
 msm_video.ko
 msm_kgsl.ko
+dcvs_boost.ko
